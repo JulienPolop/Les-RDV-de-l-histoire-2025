@@ -34,6 +34,7 @@ public class ClickDetector : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Oh oh oh Something is hoovered !
+            //Debug.Log("Mouse over: " + hit.collider.gameObject.name);
             pointed = hit.collider.GetComponent<InteractWithPoint>();
             if (pointed != null && !pointed.Interactable)
             {
