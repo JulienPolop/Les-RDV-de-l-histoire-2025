@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     [SerializeField] private CardConfig config;
     [Space(20)]
     private CardData data;
+    public CardData Data => data;
     [SerializeField] private InteractWithPoint interactor;
     [SerializeField] private Animator animator;
     [Space(20)]
@@ -39,7 +40,7 @@ public class Card : MonoBehaviour
     {
         this.interactor.Interactable = false;
         this.animator.SetTrigger("depop");
-        Destroy(this.gameObject, config.destroyDelay);
+        Destroy(this.gameObject, config.DESTROY_DELAY);
     }
 
     public void Pop()

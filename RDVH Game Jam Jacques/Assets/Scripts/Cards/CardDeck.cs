@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class CardDeck : MonoBehaviour
 {
-    private Action OnCardCliked;
+    private Action<Card> OnCardCliked;
 
     [SerializeField] private CardDeckConfig config;
     [SerializeField] private CardDB DB;
     [Space(20)]
     [SerializeField] private Transform DeckZone;
-    [SerializeField] private Transform EngagementZone;
-    
+
     [Space(20)]
     [SerializeField] private InteractWithPoint rerollInteractor;
 
     private List<Card> cards = new();
-    private List<Card> engagedCards = new();
 
-    public void Init(Action OnCardCliked)
+    public void Init(Action<Card> OnCardCliked)
     {
         this.OnCardCliked = OnCardCliked;
         rerollInteractor.OnClick = this.ReRoll;
@@ -28,7 +26,7 @@ public class CardDeck : MonoBehaviour
     private async void ReRoll()
     {
         rerollInteractor.Interactable = false;
-        
+
         DestroyHand();
         await Task.Delay(TimeSpan.FromSeconds(config.REROLL_DELAY));
         CompleteHand();
@@ -52,19 +50,28 @@ public class CardDeck : MonoBehaviour
         {
             float unitOffset = i - (config.CARD_COUNT - 1) / 2f;
             Vector3 localPosition = Vector3.left * unitOffset * config.SPACING_BTW_CARDS;
-            Debug.Log(unitOffset);
             CardData pickedCardConfig = this.PickPrefab();
             Card newCard = GameObject.Instantiate(config.CardPrefab, DeckZone.transform.position + localPosition, config.CARD_ORIENTATION, DeckZone);
-            newCard.Interactor.OnClick = OnCardCliked;
+            newCard.Interactor.OnClick = () => OnCardCliked(newCard);
             newCard.Set(pickedCardConfig);
             newCard.Pop();
             cards.Add(newCard);
         }
     }
 
-        private CardData PickPrefab()
+    private CardData PickPrefab()
     {
         int randomIndex = UnityEngine.Random.Range(0, DB.cards.Length);
         return DB.cards[randomIndex];
+    }
+
+    public void WrongRemove(Card card)
+    {
+        card.Wrong();
+    }
+
+    public void Remove(Card card)
+    {
+        this.cards.Remove(card);
     }
 }
