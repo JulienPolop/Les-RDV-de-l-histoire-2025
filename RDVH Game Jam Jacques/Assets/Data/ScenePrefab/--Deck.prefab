@@ -31,37 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8716163436744875609}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4002636476248870826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4293295698645494649}
-  m_Layer: 0
-  m_Name: PlacementZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4293295698645494649
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4002636476248870826}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8716163436744875609}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4955145130460153074
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +62,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6180398278763071887}
-  - {fileID: 4293295698645494649}
   - {fileID: 1575477174119226529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -112,7 +80,6 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 0dbc3b2a3280c794b8b9db09186dfc0a, type: 2}
   DB: {fileID: 11400000, guid: f573245824ce01349b538011e4dcef16, type: 2}
   DeckZone: {fileID: 6180398278763071887}
-  EngagementZone: {fileID: 4293295698645494649}
   rerollInteractor: {fileID: 5131557134771339669}
 --- !u!1 &8488115919357172909
 GameObject:

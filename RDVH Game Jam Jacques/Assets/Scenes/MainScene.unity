@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78266a650b2039241b5fb3ad877e1dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  attackDeck: {fileID: 7728667320375164393}
   cardDeck: {fileID: 2102785193}
   director: {fileID: 1138984410}
   detector: {fileID: 1138984411}
@@ -476,17 +477,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8478772750452916893, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
   m_PrefabInstance: {fileID: 4275599817936293321}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1795795972 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5131557134771339669, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
-  m_PrefabInstance: {fileID: 4349188597061507553}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9e5905d1c54bf458cafac4ed540925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractWithPointDown
 --- !u!4 &1831883623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2012822627244438008, guid: f6e609c5967914a49b6012329a1b4768, type: 3}
@@ -807,6 +797,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
+--- !u!1001 &2526549960233857226
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3626680526913619884, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_Name
+      value: --AttackDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.085
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471582187901553877, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
 --- !u!1001 &2791896366178829151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -933,10 +980,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: --Deck
       objectReference: {fileID: 0}
-    - target: {fileID: 5691891100306642933, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
-      propertyPath: rerollInteractor
-      value: 
-      objectReference: {fileID: 1795795972}
     - target: {fileID: 8716163436744875609, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -1157,6 +1200,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6e609c5967914a49b6012329a1b4768, type: 3}
+--- !u!114 &7728667320375164393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5020210364885417598, guid: 27ac75723de1851428fbc8bbd33833e9, type: 3}
+  m_PrefabInstance: {fileID: 2526549960233857226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dced49a2b2b554c8e754d1a92de3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackDeck
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1165,4 +1219,5 @@ SceneRoots:
   - {fileID: 1138984409}
   - {fileID: 1518775455}
   - {fileID: 4349188597061507553}
+  - {fileID: 2526549960233857226}
   - {fileID: 1994944715}

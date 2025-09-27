@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public partial class Main : MonoBehaviour
 {
+    [SerializeField] private AttackDeck attackDeck;
     [SerializeField] private CardDeck cardDeck;
     [SerializeField] private GameDirector director;
     [SerializeField] private ClickDetector detector;
@@ -24,9 +25,9 @@ public partial class Main : MonoBehaviour
     public void Start()
     {
         // Setup
-        this.cardDeck.Init(NextStep);
-        this.cardDeck.CompleteHand();
-
+        this.cardDeck.Init(OnCardSelected);
+        this.attackDeck.Init(OnDeckFull);
+        cardDeck.CompleteHand();
 
         // Testing
         FirstStep();
@@ -73,6 +74,7 @@ public partial class Main : MonoBehaviour
         if (contextStep < contexts.Count) // Get next level context
         {
             currentLevelContext = contexts[contextStep];
+            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
         }
         else // End Game
         {
@@ -86,7 +88,26 @@ public partial class Main : MonoBehaviour
 
         await Task.Delay(1000);
 
-        //await Task.Delay(TimeSpan.FromSeconds(currentLevelContext.config.playableClip.duration));
         detector.SetActive(true);
+    }
+
+    public void OnCardSelected(Card card)
+    {
+        // Bonne objectif ?
+        if (attackDeck.IsNeeding(card.Data.flag))
+        {
+            cardDeck.Remove(card);
+            attackDeck.Fill(card);
+        }
+        else
+        {
+            cardDeck.WrongRemove(card);
+        }
+    }
+
+    public void OnDeckFull()
+    {
+        attackDeck.Attack();
+        NextStep();
     }
 }
