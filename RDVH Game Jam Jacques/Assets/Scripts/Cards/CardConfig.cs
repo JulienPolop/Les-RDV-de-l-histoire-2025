@@ -9,4 +9,5 @@ public class CardConfig : ScriptableObject
     public int buttonCardMaterialIndex;
     public int flagMaterialIndex;
     public List<Material> FlagMaterial;
+    public float destroyDelay = 0.5f;
 }

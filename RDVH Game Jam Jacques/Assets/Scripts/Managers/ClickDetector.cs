@@ -34,8 +34,11 @@ public class ClickDetector : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             // Oh oh oh Something is hoovered !
-            Debug.Log("Mouse over: " + hit.collider.gameObject.name);
             pointed = hit.collider.GetComponent<InteractWithPoint>();
+            if (pointed != null && !pointed.Interactable)
+            {
+                pointed = null; // Do not detect not interactable pointed object
+            }
         }
 
         if (pointed != null)
@@ -45,12 +48,14 @@ public class ClickDetector : MonoBehaviour
             // If something is already pointed and is different, end the current hoover
             if (currentPointed != null && pointed != currentPointed)
             {
+                Debug.Log("Mouse over end: " + hit.collider.gameObject.name);
                 currentPointed.OnHoverEnd?.Invoke();
                 currentPointed = null;
             }
             // If the current pointed is new, call a start event
             if (currentPointed == null)
             {
+                Debug.Log("Mouse over start: " + hit.collider.gameObject.name);
                 pointed.OnHoverStart?.Invoke();
                 currentPointed = pointed;
             }
@@ -61,6 +66,7 @@ public class ClickDetector : MonoBehaviour
             // If something was pointed, end the pointing
             if (currentPointed != null)
             {
+                Debug.Log("Mouse over end: " + hit.collider.gameObject.name);
                 currentPointed.OnHoverEnd?.Invoke();
                 currentPointed = null;
             }
@@ -71,6 +77,7 @@ public class ClickDetector : MonoBehaviour
         {
             if (currentPointed != null)
             {
+                Debug.Log("Mouse over click: " + hit.collider.gameObject.name);
                 currentPointed.OnClick?.Invoke();
             }
         }

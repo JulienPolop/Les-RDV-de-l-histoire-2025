@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a2b9af7cb218f499da6e919b815737, type: 3}
   m_Name: CardDeckConfig
   m_EditorClassIdentifier: Assembly-CSharp::CardDeckConfig
-  cardCount: 7
-  spacingBetweenCards: 1
+  CARD_COUNT: 5
+  SPACING_BTW_CARDS: 0.08
+  CardPrefab: {fileID: 5637173516675264826, guid: 550509882db4ffa4c88a9d0321241700, type: 3}
+  CARD_ORIENTATION: {x: -0.5, y: 0, z: 0, w: 0.8660254}

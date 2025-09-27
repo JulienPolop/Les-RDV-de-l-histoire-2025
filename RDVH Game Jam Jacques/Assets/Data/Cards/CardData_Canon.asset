@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e2395956aa14e49893c3d0d527d292, type: 3}
   m_Name: CardData_Canon
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  color: {r: 0, g: 0, b: 0, a: 0}
-  flag: 0
-  Title: 
+  flag: 2
+  Title: Canon
   Description: 
   cardMaterial: {fileID: 0}
   topCardMaterial: {fileID: 0}
