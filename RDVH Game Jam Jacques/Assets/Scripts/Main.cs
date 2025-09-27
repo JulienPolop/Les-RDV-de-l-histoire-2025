@@ -25,6 +25,7 @@ public partial class Main : MonoBehaviour
     {
         // Setup
         this.cardDeck.Init(NextStep);
+        this.cardDeck.CompleteHand();
 
 
         // Testing
@@ -51,7 +52,6 @@ public partial class Main : MonoBehaviour
         director.Init(currentLevelContext.levelEnvironment);
 
         detector.SetActive(true);
-        //cardDeck.Complete();
     }
 
     public async void NextStep()
@@ -88,6 +88,5 @@ public partial class Main : MonoBehaviour
 
         //await Task.Delay(TimeSpan.FromSeconds(currentLevelContext.config.playableClip.duration));
         detector.SetActive(true);
-        //cardDeck.Complete();
     }
 }

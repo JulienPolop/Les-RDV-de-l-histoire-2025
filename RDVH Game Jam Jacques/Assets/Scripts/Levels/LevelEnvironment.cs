@@ -6,6 +6,7 @@ public class LevelEnvironment : MonoBehaviour
 {
     public Transform cameraFocusPoint;
     public PlayableDirector playableDirector;
+    public Transform VaubanPosition;
 
     public void Validate()
     {
