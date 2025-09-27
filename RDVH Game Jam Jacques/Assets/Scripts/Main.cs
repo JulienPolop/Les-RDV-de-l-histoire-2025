@@ -20,6 +20,8 @@ public partial class Main : MonoBehaviour
     {
         // Setup
         this.cardDeck.Init(NextStep);
+
+
         // Testing
         contextStep = -1;
         NextStep();

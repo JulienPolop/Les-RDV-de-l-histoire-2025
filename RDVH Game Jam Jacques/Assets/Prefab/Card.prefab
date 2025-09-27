@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 2233676746648245102}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
 --- !u!65 &5864343454334813036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,11 +115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef69388a68378ba4898fc7c4d38308d6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef69388a68378ba4898fc7c4d38308d6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef69388a68378ba4898fc7c4d38308d6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -131,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef69388a68378ba4898fc7c4d38308d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef69388a68378ba4898fc7c4d38308d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

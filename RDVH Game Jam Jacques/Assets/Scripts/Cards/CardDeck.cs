@@ -10,7 +10,9 @@ public class CardDeck : MonoBehaviour
         [SerializeField] private CardDeckConfig config;
         [SerializeField] private CardDB DB;
         [Space(20)]
-        [SerializeField] private Transform CardCreationPoint;
+        [SerializeField] private Transform DeckZone;
+        [SerializeField] private Transform EngagementZone;
+        
         [Space(20)]
         [SerializeField] private InteractWithPoint debugInteractor;
 
@@ -28,9 +30,9 @@ public class CardDeck : MonoBehaviour
             while (cards.Count < config.CARD_COUNT)
             {
                 CardData pickedCardConfig = this.PickPrefab();
-                Card newCard = GameObject.Instantiate(config.CardPrefab, CardCreationPoint.position, Quaternion.identity, this.transform);
+                //Card newCard = GameObject.Instantiate(config.CardPrefab, CardCreationPoint.position, Quaternion.identity, this.transform);
                 //TODO newCard.interactor.OnClick = OnCardCliked;
-                newCard.Set(pickedCardConfig);
+                //newCard.Set(pickedCardConfig);
             }
         }
 
