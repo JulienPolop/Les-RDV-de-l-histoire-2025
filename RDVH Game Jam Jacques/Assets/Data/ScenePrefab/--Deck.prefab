@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DescriptionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1502991207794355034, guid: b1bdc1201a28d174b8ebafa2171c3bfd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2737714853079670127, guid: b1bdc1201a28d174b8ebafa2171c3bfd, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
