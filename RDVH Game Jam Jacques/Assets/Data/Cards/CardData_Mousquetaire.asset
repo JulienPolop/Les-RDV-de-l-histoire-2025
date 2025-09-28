@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e2395956aa14e49893c3d0d527d292, type: 3}
   m_Name: CardData_Mousquetaire
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  flag: 0
-  Title: Mousquetaire
-  Description: 
-  cardMaterial: {fileID: 0}
-  topCardMaterial: {fileID: 0}
-  buttonCardMaterial: {fileID: 0}
+  flag: 1
+  Title: MOUSQUETAIRE
+  Description: "Le Mousquetaire du roi est un soldat d\u2019\xE9lite appartenant
+    \xE0 la garde rapproch\xE9e du roi de France.\r\n\r\nPresque tous gentilshommes,
+    ils se battent avec fougue et panache, mus par un id\xE9al chevaleresque.\r\n\r\nTroupe
+    de choc, ils sont sp\xE9cialistes dans l'art de prendre les villes."
+  DescriptionImage: {fileID: 21300000, guid: f3be2ddea0b870146936e737925f3562, type: 3}
+  IllustrationTexture: {fileID: 2800000, guid: b81cce37250c9054ca3868e656bc055f, type: 3}
+  BandTexture: {fileID: 2800000, guid: c1f763f655ca7654cb939a6e3e2cc636, type: 3}
+  BackTexture: {fileID: 2800000, guid: f7bbcbeffdd81f341aa870339f2dade1, type: 3}
+  BorderColor: {r: 0.43529412, g: 0.57254905, b: 0.7019608, a: 1}
