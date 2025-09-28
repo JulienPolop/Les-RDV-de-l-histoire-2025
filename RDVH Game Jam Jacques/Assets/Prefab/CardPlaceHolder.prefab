@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117acc24d8c4a874496079761f5889ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlaceHolder
-  config: {fileID: 11400000, guid: 7a0bd760974b6f94e90be982b83948e4, type: 2}
+  config: {fileID: 11400000, guid: a709e25bb8db9a141b256fe894b701f9, type: 2}
   image: {fileID: 2686678081874781827}
 --- !u!1 &6832428373524483981
 GameObject:

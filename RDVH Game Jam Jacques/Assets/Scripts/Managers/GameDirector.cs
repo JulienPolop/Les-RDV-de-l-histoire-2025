@@ -27,7 +27,7 @@ public class GameDirector : MonoBehaviour
 
     public async Task EndStep()
     {
-        CameraShake(0.2f, 0.005f);
+        CameraShake(0.2f, 0.1f);
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
         await Task.Delay(1000);
         VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
