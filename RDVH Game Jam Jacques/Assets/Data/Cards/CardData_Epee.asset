@@ -21,6 +21,6 @@ MonoBehaviour:
     pour se battre \xE9nergiquement dans la m\xEAl\xE9e."
   DescriptionImage: {fileID: 21300000, guid: 3a3c9d3b841b0da42ab1465759d93f84, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 4c54edb217a11d045bc08f0410b8b990, type: 3}
-  BandTexture: {fileID: 2800000, guid: 02014f28b2bd179448cee31e69106779, type: 3}
+  BandTexture: {fileID: 2800000, guid: 54019a9c73891fa49a18592c52deca13, type: 3}
   BackTexture: {fileID: 2800000, guid: a059dc91aefc8f94db7ad97158599534, type: 3}
   BorderColor: {r: 0.7490196, g: 0.39215687, b: 0.3882353, a: 1}

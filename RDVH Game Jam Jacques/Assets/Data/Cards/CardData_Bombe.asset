@@ -21,6 +21,6 @@ MonoBehaviour:
     qui, une fois allum\xE9e, d\xE9clenchait l\u2019explosion."
   DescriptionImage: {fileID: 21300000, guid: ecd3d7462234bfc42af74b153999e8c4, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 1d5dbbcddb81d5b4997c329a7f303fa9, type: 3}
-  BandTexture: {fileID: 2800000, guid: 02014f28b2bd179448cee31e69106779, type: 3}
+  BandTexture: {fileID: 2800000, guid: b179776eb2f5df34a81a7b89205144dd, type: 3}
   BackTexture: {fileID: 2800000, guid: a059dc91aefc8f94db7ad97158599534, type: 3}
   BorderColor: {r: 0.7490196, g: 0.39215687, b: 0.3882353, a: 1}

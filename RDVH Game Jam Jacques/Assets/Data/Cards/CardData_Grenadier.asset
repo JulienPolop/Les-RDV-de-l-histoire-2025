@@ -21,6 +21,6 @@ MonoBehaviour:
     corps \xE0 corps aux c\xF4t\xE9s des Mousquetaires."
   DescriptionImage: {fileID: 21300000, guid: 54bda8bd07838ea4a802389191cec338, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 64bb3feb62d1b354b81368872771dec3, type: 3}
-  BandTexture: {fileID: 2800000, guid: c1f763f655ca7654cb939a6e3e2cc636, type: 3}
+  BandTexture: {fileID: 2800000, guid: 73f3daf23950e6849a46f2b4fa80fa4c, type: 3}
   BackTexture: {fileID: 2800000, guid: f7bbcbeffdd81f341aa870339f2dade1, type: 3}
   BorderColor: {r: 0.43529415, g: 0.57254905, b: 0.7019608, a: 1}

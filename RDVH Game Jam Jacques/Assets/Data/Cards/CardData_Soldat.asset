@@ -21,6 +21,6 @@ MonoBehaviour:
     le combat."
   DescriptionImage: {fileID: 21300000, guid: a03fd977ede06ce49bad9454e108b24b, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 8a79d1c731f65364fa2535fc538b2183, type: 3}
-  BandTexture: {fileID: 2800000, guid: c1f763f655ca7654cb939a6e3e2cc636, type: 3}
+  BandTexture: {fileID: 2800000, guid: 0ceb0d1bbd6dd544d9c19481424ca634, type: 3}
   BackTexture: {fileID: 2800000, guid: f7bbcbeffdd81f341aa870339f2dade1, type: 3}
   BorderColor: {r: 0.43529412, g: 0.57254905, b: 0.7019608, a: 1}
