@@ -19578,24 +19578,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bonjour G\xE9n\xE9ral. Je suis le <color=red><b>Marquis de Vauban</b></color>.\\r\\n\\r\\nLe
-        roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout pris la forteresse
-        que l'on voit l\xE0 bas. Puisqu'elle est construite selon mes plans, je suis
-        ici pour vous y aider."
+      value: "Bonjour G\xE9n\xE9ral. Je suis le  <color=red><i><b>Marquis de Vauban</b></i></color>.
+        \\n\\nLe roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout prix la forteresse
+        que l\u2019on voit l\xE0-bas. Puisqu\u2019elle a \xE9t\xE9 b\xE2tie d\u2019apr\xE8s
+        mes plans, je suis venu pour vous en faciliter la prise."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Les forteresses de ce types sont tr\xE8s longues \xE0 capturer.\\nPour
-        cela nous devons effectuer un si\xE8ge, qui pourrais durer plusieurs mois.
-        La premi\xE8re \xE9tape va \xEAtre d'installer notre <b>campement</b>, pour
-        installer notre arm\xE9e et commencer les pr\xE9paratifs. Ici serait l'endroit
-        parfait, nous somme hors de port\xE9e des armes ennemies."
+      value: "Les forteresses de ce type se rendent rarement rapidement : il faudra
+        nous pr\xE9parer \xE0 mener un si\xE8ge, qui pourrait durer plusieurs mois.
+        La premi\xE8re \xE9tape consiste \xE0 \xE9tablir notre <b>campement</b> afin
+        d\u2019y loger l\u2019arm\xE9e et d\u2019organiser les pr\xE9paratifs. Cet
+        emplacement serait parfait : nous sommes hors de port\xE9e des pi\xE8ces
+        ennemies."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[2]'
-      value: "Ah! Mais voil\xE0 des \xE9claireurs ennemis! \\nD\xE9barassons nous
-        en avant de monter nos tentes. Quelques <b>mousquetaires</b> devraient faire
-        l'affaire."
+      value: "\u2014 Ah ! Voil\xE0 des \xE9claireurs ennemis.\\nD\xE9barrassons-nous
+        d\u2019eux avant de monter nos tentes. Quelques <b>mousquetaires</b> suffiront."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20330,9 +20330,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bonjour G\xE9n\xE9ral. Je suis le <color=red><b>Marquis de Vauban</b></color>.\n\nLe
-    roi Louis XIV vous a demand\xE9 de reprendre \xE0 tout pris la forteresse que
-    l'on voit la bas. Comme elle est de ma conception, je suis ici pour vous y aider."
+  m_text: "Bonjour G\xE9n\xE9ral. Je suis le  <color=red><i><b>Marquis de Vauban</b></i></color>.\n\nLe
+    roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout prix la forteresse que
+    l\u2019on voit l\xE0-bas. Puisqu\u2019elle a \xE9t\xE9 b\xE2tie d\u2019apr\xE8s
+    mes plans, je suis venu pour vous en faciliter la prise."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
@@ -20397,7 +20398,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 46.9346, y: 84.17384, z: 371.5477, w: 59.28991}
+  m_margin: {x: 69.705536, y: 111.77213, z: 371.5477, w: 59.28991}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

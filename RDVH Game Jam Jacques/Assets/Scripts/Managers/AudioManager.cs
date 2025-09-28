@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     private static AudioManager instance; // Access singleton
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource battleSource;
+    [SerializeField] public AudioSource writeSource;
     [SerializeField] private AudioSource vfxSource;
     [SerializeField] private AudioDB audioConfig;
     private Dictionary<string, AudioEvent> audioDB;

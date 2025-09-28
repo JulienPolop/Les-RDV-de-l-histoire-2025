@@ -12,6 +12,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private CanvasGroup bubbleGroup;     // Optionnel : pour un fade propre
     [SerializeField] private TextMeshProUGUI textUI;      // Le texte TMP
     [SerializeField] private Button nextButton;           // Bouton pour avancer / skip
+    [SerializeField] private AudioManager AudioManager;         // Pour jouer le son d'écriture
 
     [Header("Typewriter")]
     [SerializeField] private float charsPerSecond = 40f;
@@ -52,6 +53,7 @@ public class DialogueController : MonoBehaviour
 
         try
         {
+            AudioManager.writeSource.Play();
             await ShowBubbleAsync(true, token);
 
             for (int i = 0; i < lines.Count; i++)
@@ -71,6 +73,7 @@ public class DialogueController : MonoBehaviour
         }
         finally
         {
+            AudioManager.writeSource.Stop();
             nextButton.onClick.RemoveListener(OnNextClicked);
             _advanceTcs = null;
             _typing = false;
