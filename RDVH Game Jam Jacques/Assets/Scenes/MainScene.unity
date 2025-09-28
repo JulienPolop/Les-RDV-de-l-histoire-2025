@@ -1920,13 +1920,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bravo! Le fort est presque \xE0 nous, il ne nous reste plus qu'a capturer
-        la porte de la ville! "
+      value: "Bravo ! Le fort est presque \xE0 nous : il ne nous reste plus qu\u2019\xE0
+        prendre la <b>Porte</b> de la ville."
       objectReference: {fileID: 0}
     - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Nous allons leur faire <b>battre la chamade</b> au tambours, ils n'auront
-        d'autre choix que d'engager des pourparlers et de n\xE9gocier une reddition."
+      value: "Nous allons leur faire <b>battre la chamade</b> au tambour ; ils n\u2019auront
+        d\u2019autre choix que d\u2019ouvrir des pourparlers et de n\xE9gocier leur
+        reddition."
       objectReference: {fileID: 0}
     - target: {fileID: 8478772750452916893, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3864,15 +3865,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Nous ne somme plus tr\xE8s loin!\\nNous avons pris la <b>demie-Lune</b>
-        et avons travers\xE9 le <b>foss\xE9 sec</b>! Mais avant de pouvoir attaquer
-        la porte, il va falloir prendre d'assaut les <b>Bastions</b> \\n Ce sont
-        ces grosses fortifications aux angles de chaque murs. "
+      value: "Nous ne sommes plus tr\xE8s loin ! \\nNous avons pris la <b>demi-lune</b>
+        et franchi le <b>foss\xE9 sec</b>. Mais avant d\u2019atteindre la porte,
+        il faudra prendre d'assaut les <b>Bastions</b>. Ce sont ces imposantes fortifications
+        plac\xE9es aux angles des murs."
       objectReference: {fileID: 0}
     - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "D'ici, nous sommes pris entre les feux des deux bastions prot\xE9geant
-        la porte, alors pas le choix...\\n\\n A l'assaut! "
+      value: "D\u2019ici, nous sommes pris sous le feu des deux <b>Bastions</b> qui
+        prot\xE8gent la porte : il n\u2019y a donc pas d\u2019autre choix. \\n\\n\u2014
+        \xC0 l\u2019assaut !"
       objectReference: {fileID: 0}
     - target: {fileID: 8139606753087567227, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: m_LocalScale.x
@@ -9336,17 +9338,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Ahah! Je savais que ces tranch\xE9es seraient utiles! \\nNous sommes
-        maintenants aux pieds des remparts. Nous allons pouvoir passer \xE0 l'attaque
-        de la forteresse! \\nLa premi\xE8re \xE9tape va \xEAtre de s'emparer de cette
-        <b>Demi-lune</b>, cette fortification avanc\xE9e qui prot\xE8ge la porte. "
+      value: "Ahah \u2014 je savais que ces tranch\xE9es nous seraient utiles ! \\nNous
+        sommes maintenant aux pieds des remparts : l\u2019heure de l\u2019attaque
+        de la forteresse a sonn\xE9. \\nLa premi\xE8re \xE9tape consiste \xE0 s\u2019emparer
+        de cette <b>demi-lune</b>, fortification avanc\xE9e prot\xE9geant la porte."
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Cela ne sera pas une mince \xE0 faire, les ennemis y sont barricad\xE9,
-        \\net avec sa forme triangulaire, ils peuvent tirer de tous les angles! \\n
-        Nous allons devoir utiliser nos <b>canons</b> pour cr\xE9er des br\xEAches,
-        puis attaquer avec nos soldats... "
+      value: "Ce ne sera pas une mince affaire : les ennemis s\u2019y sont barricad\xE9s,
+        et sa disposition leur permet de nous tirer dessus depuis plusieurs angles.
+        \\nNous devrons employer nos <b>canons</b> pour ouvrir des br\xE8ches, puis
+        lancer l\u2019assaut avec nos soldats."
       objectReference: {fileID: 0}
     - target: {fileID: 1650603546346249341, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: m_LocalScale.x
@@ -23185,7 +23187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6558396317348318336, guid: 39d0835ffb67c1f4a96354db5eb8ab8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.007999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6558396317348318336, guid: 39d0835ffb67c1f4a96354db5eb8ab8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39202,28 +39204,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bravo! Grace \xE0 vous, notre arm\xE9e a pu installer son campement
-        \\net des tranch\xE9es de d\xE9fenses! Mais la pr\xE9paration du si\xE8ge
-        n'est pas encore termin\xE9e! "
+      value: "Bravo \u2014 gr\xE2ce \xE0 vous, le camp est mont\xE9 et les premi\xE8res
+        tranch\xE9es sont en place. Mais on n\u2019a pas encore fini les pr\xE9paratifs
+        du si\xE8ge."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Vous voyez cette grande prairie d\xE9gag\xE9e? \\nC'est le <b>Glacis</b>,
-        la premi\xE8re ligne de d\xE9fense d'une forteresse Vauban! Sans protection,
-        ici, notre arm\xE9e serait compl\xE8tement \xE0 d\xE9couvert des tirs ennemis!\\nMais
-        pas de panique, nous allons creuser des <b>Tranch\xE9es d'approches</b>,
-        pour se prot\xE9ger lors de notre assault. "
+      value: "Voyez cette vaste prairie d\xE9blay\xE9e : c\u2019est le <b>glacis</b>,
+        la premi\xE8re ligne de d\xE9fense d\u2019une forteresse \xE0 la Vauban.
+        Sans protection, nos hommes seraient enti\xE8rement expos\xE9s aux tirs ennemis.\\n\\n
+        Rassurez-vous : nous allons creuser des <b>tranch\xE9es d\u2019approche</b>
+        pour abriter nos hommes lors de l\u2019assaut."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[2]'
-      value: "Ce sont des tranch\xE9es, creus\xE9es en zigzag\\npour \xE9viter les
-        tirs en enfilade adverses. Elles sont utilis\xE9e pour amasser nos armes
-        et nos troupes troupes avant d'attaquer. "
+      value: "Ces tranch\xE9es, en zigzag, emp\xEAchent les tirs en enfilade et permettent
+        de masser hommes et armes en s\xE9curit\xE9 avant l\u2019attaque."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[3]'
-      value: "Hey! Les assi\xE9g\xE9s tentes une sortie pour nous en emp\xEAcher!\\n\\nStoppez
-        les!"
+      value: "\u2014 Attention : les assi\xE9g\xE9s tentent une sortie pour nous
+        en emp\xEAcher ! \\n\\nStoppez-les !"
       objectReference: {fileID: 0}
     - target: {fileID: 7557272428115867426, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: m_LocalPosition.x

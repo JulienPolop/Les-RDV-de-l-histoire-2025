@@ -20,8 +20,10 @@ public class AudioManager : MonoBehaviour
 
         instance = this;
 
-        musicSource.Play();
-        battleSource.Play();
+        if(musicSource!=null)
+            musicSource.Play();
+        if(battleSource!=null)
+            battleSource.Play();
     }
     public void Init()
     {
