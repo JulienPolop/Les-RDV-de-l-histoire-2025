@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     private static AudioManager instance; // Access singleton
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource battleSource;
+    [SerializeField] public AudioSource writeSource;
     [SerializeField] private AudioSource vfxSource;
     [SerializeField] private AudioDB audioConfig;
     private Dictionary<string, AudioEvent> audioDB;
@@ -19,8 +20,10 @@ public class AudioManager : MonoBehaviour
 
         instance = this;
 
-        musicSource.Play();
-        battleSource.Play();
+        if(musicSource!=null)
+            musicSource.Play();
+        if(battleSource!=null)
+            battleSource.Play();
     }
     public void Init()
     {

@@ -168,7 +168,7 @@ public class GameDirector : MonoBehaviour
 
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
 
-        await Task.Delay(5000);
+        await Task.Delay(3500);
 
         UIFin.SetActive(true);
     }

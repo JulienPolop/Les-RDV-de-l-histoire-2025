@@ -1920,13 +1920,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bravo! Le fort est presque \xE0 nous, il ne nous reste plus qu'a capturer
-        la porte de la ville! "
+      value: "Bravo ! Le fort est presque \xE0 nous : il ne nous reste plus qu\u2019\xE0
+        prendre la <b>Porte</b> de la ville."
       objectReference: {fileID: 0}
     - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Nous allons leur faire <b>battre la chamade</b> au tambours, ils n'auront
-        d'autre choix que d'engager des pourparlers et de n\xE9gocier une reddition."
+      value: "Nous allons leur faire <b>battre la chamade</b> au tambour ; ils n\u2019auront
+        d\u2019autre choix que d\u2019ouvrir des pourparlers et de n\xE9gocier leur
+        reddition."
       objectReference: {fileID: 0}
     - target: {fileID: 8478772750452916893, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2135,6 +2136,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
   m_PrefabInstance: {fileID: 1851157490}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &106576617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106576619}
+  - component: {fileID: 106576618}
+  m_Layer: 0
+  m_Name: WriteSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &106576618
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106576617}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 34eb5e9909d09cc4bbe25cafc5395612, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &106576619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106576617}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 429598062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &108906004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
@@ -2952,6 +3082,138 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
   m_PrefabInstance: {fileID: 421270193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &191329750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191329751}
+  - component: {fileID: 191329754}
+  - component: {fileID: 191329753}
+  - component: {fileID: 191329752}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &191329751
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191329750}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 475207451}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -46, y: 63}
+  m_SizeDelta: {x: 94, y: 62}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &191329752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191329750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 191329753}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138984408}
+        m_TargetAssemblyTypeName: Main, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &191329753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191329750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cae545c5362d0a046b38903786b3a367, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &191329754
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191329750}
+  m_CullTransparentMesh: 1
 --- !u!4 &191917182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
@@ -3556,15 +3818,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Nous ne somme plus tr\xE8s loin!\\nNous avons pris la <b>demie-Lune</b>
-        et avons travers\xE9 le <b>foss\xE9 sec</b>! Mais avant de pouvoir attaquer
-        la porte, il va falloir prendre d'assaut les <b>Bastions</b> \\n Ce sont
-        ces grosses fortifications aux angles de chaque murs. "
+      value: "Nous ne sommes plus tr\xE8s loin ! \\nNous avons pris la <b>demi-lune</b>
+        et franchi le <b>foss\xE9 sec</b>. Mais avant d\u2019atteindre la porte,
+        il faudra prendre d'assaut les <b>Bastions</b>. Ce sont ces imposantes fortifications
+        plac\xE9es aux angles des murs."
       objectReference: {fileID: 0}
     - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "D'ici, nous sommes pris entre les feux des deux bastions prot\xE9geant
-        la porte, alors pas le choix...\\n\\n A l'assaut! "
+      value: "D\u2019ici, nous sommes pris sous le feu des deux <b>Bastions</b> qui
+        prot\xE8gent la porte : il n\u2019y a donc pas d\u2019autre choix. \\n\\n\u2014
+        \xC0 l\u2019assaut !"
       objectReference: {fileID: 0}
     - target: {fileID: 8139606753087567227, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: m_LocalScale.x
@@ -6899,6 +7162,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6499622949876399214, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
   m_PrefabInstance: {fileID: 4210378617189307630}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &429598063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9020492788537997885, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
+  m_PrefabInstance: {fileID: 4210378617189307630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8be9f9f5bcdfe04db6eb38f1dfc209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
 --- !u!4 &430767561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
@@ -7472,7 +7746,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 191329751}
   m_Father: {fileID: 1734769676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8914,17 +9189,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Ahah! Je savais que ces tranch\xE9es seraient utiles! \\nNous sommes
-        maintenants aux pieds des remparts. Nous allons pouvoir passer \xE0 l'attaque
-        de la forteresse! \\nLa premi\xE8re \xE9tape va \xEAtre de s'emparer de cette
-        <b>Demi-lune</b>, cette fortification avanc\xE9e qui prot\xE8ge la porte. "
+      value: "Ahah \u2014 je savais que ces tranch\xE9es nous seraient utiles ! \\nNous
+        sommes maintenant aux pieds des remparts : l\u2019heure de l\u2019attaque
+        de la forteresse a sonn\xE9. \\nLa premi\xE8re \xE9tape consiste \xE0 s\u2019emparer
+        de cette <b>demi-lune</b>, fortification avanc\xE9e prot\xE9geant la porte."
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Cela ne sera pas une mince \xE0 faire, les ennemis y sont barriquad\xE9,
-        \\net avec sa forme triangulaire, ils peuvent tirer de tous les angles! \\n
-        Nous allons devoir utiliser nos <b>canons</b> pour cr\xE9er des br\xEAches,
-        puis attaquer avec nos soldats... "
+      value: "Ce ne sera pas une mince affaire : les ennemis s\u2019y sont barricad\xE9s,
+        et sa disposition leur permet de nous tirer dessus depuis plusieurs angles.
+        \\nNous devrons employer nos <b>canons</b> pour ouvrir des br\xE8ches, puis
+        lancer l\u2019assaut avec nos soldats."
       objectReference: {fileID: 0}
     - target: {fileID: 1650603546346249341, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: m_LocalScale.x
@@ -9286,18 +9561,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567393777}
-  m_LocalRotation: {x: -0, y: -0, z: 0.14976408, w: 0.9887218}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3571345, y: 1.3571345, z: 1.3571345}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1940115832}
-  m_Father: {fileID: 1606454366}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.227}
+  m_Children: []
+  m_Father: {fileID: 1401211655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -7, y: 54}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -147.14517, y: -25.785555}
+  m_SizeDelta: {x: 290, y: 83.2}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &567393779
 MonoBehaviour:
@@ -9363,9 +9637,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 7f872e292e9abef428dd6e75add143b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13853,6 +14127,7 @@ MonoBehaviour:
   bubbleGroup: {fileID: 0}
   textUI: {fileID: 1181640979}
   nextButton: {fileID: 567393779}
+  AudioManager: {fileID: 429598063}
   charsPerSecond: 40
   useUnscaledTime: 0
   punctuation: ".,;:!?\u2026"
@@ -19377,24 +19652,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bonjour G\xE9n\xE9ral. Je suis le <color=red><b>Marquis de Vauban</b></color>.\\r\\n\\r\\nLe
-        roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout pris la forteresse
-        que l'on voit l\xE0 bas. Puisqu'elle est construite selon mes plans, je suis
-        ici pour vous y aider."
+      value: "Bonjour G\xE9n\xE9ral. Je suis le  <color=red><i><b>Marquis de Vauban</b></i></color>.
+        \\n\\nLe roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout prix la forteresse
+        que l\u2019on voit l\xE0-bas. Puisqu\u2019elle a \xE9t\xE9 b\xE2tie d\u2019apr\xE8s
+        mes plans, je suis venu pour vous en faciliter la prise."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Les forteresses de ce types sont tr\xE8s longues \xE0 capturer.\\nPour
-        cela nous devons effectuer un si\xE8ge, qui pourrais durer plusieurs mois.
-        La premi\xE8re \xE9tape va \xEAtre d'installer notre <b>campement</b>, pour
-        installer notre arm\xE9e et commencer les pr\xE9paratifs. Ici serait l'endroit
-        parfait, nous somme hors de port\xE9e des armes ennemies."
+      value: "Les forteresses de ce type se rendent rarement rapidement : il faudra
+        nous pr\xE9parer \xE0 mener un si\xE8ge, qui pourrait durer plusieurs semaines.
+        La premi\xE8re \xE9tape consiste \xE0 \xE9tablir notre <b>campement</b> afin
+        d\u2019y loger l\u2019arm\xE9e et d\u2019organiser les pr\xE9paratifs. Cet
+        emplacement serait parfait : nous sommes hors de port\xE9e des pi\xE8ces
+        ennemies."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[2]'
-      value: "Ah! Mais voil\xE0 des \xE9claireurs ennemis! \\nD\xE9barassons nous
-        en avant de monter nos tentes. Quelques <b>mousquetaires</b> devraient faire
-        l'affaire."
+      value: "\u2014 Ah ! Voil\xE0 des \xE9claireurs ennemis.\\nD\xE9barrassons-nous
+        d\u2019eux avant de monter nos tentes. Quelques <b>mousquetaires</b> suffiront."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20129,9 +20404,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bonjour G\xE9n\xE9ral. Je suis le <color=red><b>Marquis de Vauban</b></color>.\n\nLe
-    roi Louis XIV vous a demand\xE9 de reprendre \xE0 tout pris la forteresse que
-    l'on voit la bas. Comme elle est de ma conception, je suis ici pour vous y aider."
+  m_text: "Bonjour G\xE9n\xE9ral. Je suis le  <color=red><i><b>Marquis de Vauban</b></i></color>.\n\nLe
+    roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout prix la forteresse que
+    l\u2019on voit l\xE0-bas. Puisqu\u2019elle a \xE9t\xE9 b\xE2tie d\u2019apr\xE8s
+    mes plans, je suis venu pour vous en faciliter la prise."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
@@ -20196,7 +20472,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 46.9346, y: 84.17384, z: 371.5477, w: 59.28991}
+  m_margin: {x: 69.705536, y: 111.77213, z: 371.5477, w: 59.28991}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -22608,7 +22884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6558396317348318336, guid: 39d0835ffb67c1f4a96354db5eb8ab8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.007999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6558396317348318336, guid: 39d0835ffb67c1f4a96354db5eb8ab8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24305,6 +24581,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1181640978}
+  - {fileID: 567393778}
   m_Father: {fileID: 1606454366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -28284,7 +28561,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1401211655}
-  - {fileID: 567393778}
   m_Father: {fileID: 782418963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -37397,142 +37673,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
   m_PrefabInstance: {fileID: 609550181}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1940115831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1940115832}
-  - component: {fileID: 1940115834}
-  - component: {fileID: 1940115833}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1940115832
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940115831}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 567393778}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1940115833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940115831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Next
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1940115834
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940115831}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1951041333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38462,28 +38602,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Bravo! Grace \xE0 vous, notre arm\xE9e a pu installer son campement
-        \\net des tranch\xE9es de d\xE9fenses! Mais la pr\xE9paration du si\xE8ge
-        n'est pas encore termin\xE9e! "
+      value: "Bravo \u2014 gr\xE2ce \xE0 vous, le camp est mont\xE9 et les premi\xE8res
+        tranch\xE9es sont en place. Mais on n\u2019a pas encore fini les pr\xE9paratifs
+        du si\xE8ge."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
-      value: "Vous voyez cette grande prairie d\xE9gag\xE9e? \\nC'est le <b>Glacis</b>,
-        la premi\xE8re ligne de d\xE9fense d'une forteresse Vauban! Sans protection,
-        ici, notre arm\xE9e serait compl\xE8tement \xE0 d\xE9couvert des tirs ennemis!\\nMais
-        pas de panique, nous allons creuser des <b>Tranch\xE9es d'approches</b>,
-        pour se prot\xE9ger lors de notre assault. "
+      value: "Voyez cette vaste prairie d\xE9blay\xE9e : c\u2019est le <b>glacis</b>,
+        la premi\xE8re ligne de d\xE9fense d\u2019une forteresse \xE0 la Vauban.
+        Sans protection, nos hommes seraient enti\xE8rement expos\xE9s aux tirs ennemis.\\n\\n
+        Rassurez-vous : nous allons creuser des <b>tranch\xE9es d\u2019approche</b>
+        pour abriter nos hommes lors de l\u2019assaut."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[2]'
-      value: "Ce sont des tranch\xE9es, creus\xE9es en zigzag\\npour \xE9viter les
-        tirs en enfilade adverses. Elles sont utilis\xE9e pour amasser nos armes
-        et nos troupes troupes avant d'attaquer. "
+      value: "Ces tranch\xE9es, en zigzag, emp\xEAchent les tirs en enfilade et permettent
+        de masser hommes et armes en s\xE9curit\xE9 avant l\u2019attaque."
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[3]'
-      value: "Hey! Les assi\xE9g\xE9s tentes une sortie pour nous en emp\xEAcher!\\n\\nStoppez
-        les!"
+      value: "\u2014 Attention : les assi\xE9g\xE9s tentent une sortie pour nous
+        en emp\xEAcher ! \\n\\nStoppez-les !"
       objectReference: {fileID: 0}
     - target: {fileID: 7557272428115867426, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41091,7 +41230,7 @@ PrefabInstance:
     - target: {fileID: 4700427214081870270, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 66c846bab1b9bf64daf0cc019ecc3cd9, type: 3}
+      objectReference: {fileID: 8300000, guid: adf18fad723128e42b67151c28261c2f, type: 3}
     - target: {fileID: 6203954350272611811, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -41137,12 +41276,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020492788537997885, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
+      propertyPath: writeSource
+      value: 
+      objectReference: {fileID: 106576618}
+    - target: {fileID: 9020492788537997885, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
       propertyPath: battleSource
       value: 
       objectReference: {fileID: 1624262067}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6499622949876399214, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 106576619}
     - targetCorrespondingSourceObject: {fileID: 6499622949876399214, guid: 2104f85e1d2ab164c9f874540966b96c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624262068}
