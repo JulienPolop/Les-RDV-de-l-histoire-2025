@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 2
   Title: "\xC9P\xC9E"
-  Description: 
+  Description: "Lors des assauts, les Mousquetaires du roi chargent toujours \xE0
+    pied et avec leurs fortes-\xE9p\xE9es, d\xE9laissant l\u2019arme \xE0 feu consid\xE9r\xE9e
+    comme l\u2019arme du l\xE2che. \r\n\r\nLa forte-\xE9p\xE9e est plus courte et
+    permet de frapper de taille (avec le tranchant) et d\u2019estoc (avec la pointe)
+    pour se battre \xE9nergiquement dans la m\xEAl\xE9e."
   DescriptionImage: {fileID: 21300000, guid: 3a3c9d3b841b0da42ab1465759d93f84, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 4c54edb217a11d045bc08f0410b8b990, type: 3}
   BandTexture: {fileID: 2800000, guid: 02014f28b2bd179448cee31e69106779, type: 3}

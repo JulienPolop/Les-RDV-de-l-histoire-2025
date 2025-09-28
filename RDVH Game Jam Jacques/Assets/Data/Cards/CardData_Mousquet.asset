@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 2
   Title: MOUSQUET
-  Description: 
+  Description: "Le mousquet \xE0 m\xE8che est l\u2019arme \xE0 feu portative du xviie
+    si\xE8cle pesant six \xE0 huit kilos.\r\n\r\nPour proc\xE9der au tir, il faut
+    respecter plusieurs \xE9tapes et utiliser plusieurs accessoires : charger balle
+    et poudre dans le canon, placer une charge explosive dans le bassinet, y ajouter
+    la m\xE8che allum\xE9e et enfin tirer. Lourd et peu pr\xE9cis, le mousquet est
+    remplac\xE9 par le fusil \xE0 silex \xE0 la fin du XVIIe si\xE8cle."
   DescriptionImage: {fileID: 21300000, guid: 789e63ba7d8336549ab84c251feae933, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 2c0021840b074a44a82be9000c75485c, type: 3}
   BandTexture: {fileID: 2800000, guid: 02014f28b2bd179448cee31e69106779, type: 3}

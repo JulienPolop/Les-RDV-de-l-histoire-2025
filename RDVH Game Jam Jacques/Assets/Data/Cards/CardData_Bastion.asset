@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 0
   Title: BASTION
-  Description: Ceci est un baeau bastion
+  Description: "Une fois la demi-lune prise, les assaillants avancent, traversent
+    le foss\xE9 sec. Une fois le foss\xE9 investi, ils partent \xE0 l\u2019assaut
+    du bastion.\r\n\r\nLe bastion est un ouvrage pentagonal dont la base \xE9pouse
+    un angle du mur d\u2019enceinte de la ville et s\u2019avance dans le foss\xE9,
+    prot\xE9geant ainsi les courtines (mur d\u2019enceinte) et les autres bastions
+    voisins. Il est fait de hauts murs, que les attaquants escaladent pour s\u2019en
+    emparer."
   DescriptionImage: {fileID: 21300000, guid: fa62b3da2d65dba4c9fe0ad72201d4de, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: f3899439e47345e4a87520afe2058594, type: 3}
   BandTexture: {fileID: 2800000, guid: 0bac40b34c9c67d49a44d6589ae9c9f0, type: 3}

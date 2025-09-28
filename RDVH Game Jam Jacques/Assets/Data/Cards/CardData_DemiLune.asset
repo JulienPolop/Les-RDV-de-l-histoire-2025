@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 0
   Title: DEMI-LUNE
-  Description: 
+  Description: "Le premier ouvrage rencontr\xE9 est une demi-lune : cette fortification
+    avanc\xE9e prot\xE8ge la porte et le mur d\u2019enceinte de la ville. \r\n\r\nElle
+    est elle-m\xEAme prot\xE9g\xE9e par une contrescarpe et son chemin-couvert, sur
+    lequel les assi\xE9g\xE9s sont barricad\xE9s pour tirer sur les attaquants. \r\n\r\nPour
+    s\u2019emparer d\u2019une demi-lune, les attaquants escaladent les hauts murs
+    ou s\u2019engouffrent dans une br\xE8che (mur \xE9boul\xE9) cr\xE9\xE9e par les
+    boulets de canon."
   DescriptionImage: {fileID: 21300000, guid: 80b9f5efabdabcc4ea5b04a7a65f95bd, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 430c06893837e83409561fdec858d57a, type: 3}
   BandTexture: {fileID: 2800000, guid: 0bac40b34c9c67d49a44d6589ae9c9f0, type: 3}

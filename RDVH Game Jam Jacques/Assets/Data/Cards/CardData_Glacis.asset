@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 0
   Title: GLACIS
-  Description: 
+  Description: "Vaste prairie d\xE9gag\xE9e en avant des fortifications, c\u2019est
+    le premier \xE9l\xE9ment d\xE9fensif qui a pour but de mettre l\u2019attaquant
+    \xE0 d\xE9couvert. \r\n\r\nPour s\u2019approcher en s\xE9curit\xE9, les soldats
+    creusent deux tranch\xE9es d\u2019approche en zigzag vers la ville, entrecoup\xE9es
+    de trois tranch\xE9es parall\xE8les, servant de places d\u2019armes pour soldats
+    et canons. La derni\xE8re parall\xE8le sert de base pour les assauts."
   DescriptionImage: {fileID: 21300000, guid: b9f90be63e3bfe04d97a350549e210e0, type: 3}
   IllustrationTexture: {fileID: 2800000, guid: 71dc83fed9138dd4ab519885df49c3b5, type: 3}
   BandTexture: {fileID: 2800000, guid: 0bac40b34c9c67d49a44d6589ae9c9f0, type: 3}
