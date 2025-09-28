@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -7,6 +9,7 @@ public class LevelEnvironment : MonoBehaviour
     public Transform cameraFocusPoint;
     public PlayableDirector playableDirector;
     public Transform VaubanPosition;
+    public List<string> VaubanDialog;
 
     public void Validate()
     {

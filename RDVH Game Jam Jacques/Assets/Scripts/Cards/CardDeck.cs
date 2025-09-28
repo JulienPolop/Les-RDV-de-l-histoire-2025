@@ -14,13 +14,20 @@ public class CardDeck : MonoBehaviour
 
     [Space(20)]
     [SerializeField] private InteractWithPoint rerollInteractor;
+    [SerializeField] private ClocheController bellController;
 
     private List<Card> cards = new();
 
     public void Init(Action<Card> OnCardCliked)
     {
         this.OnCardCliked = OnCardCliked;
-        rerollInteractor.OnClick = this.ReRoll;
+        rerollInteractor.OnClick = this.OnClickReroll;
+    }
+
+    private async void OnClickReroll()
+    {
+        bellController.RingBell();
+        ReRoll();
     }
 
     private async void ReRoll()

@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
 
     public void Start()
     {
-        interactor.OnHoverStart = () => this.animator.SetBool("hover", true);
+        interactor.OnHoverStart = () => this.animator.SetBool("hover", true); 
         interactor.OnHoverEnd = () => this.animator.SetBool("hover", false);
     }
 

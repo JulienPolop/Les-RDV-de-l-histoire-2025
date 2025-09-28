@@ -67,7 +67,8 @@ public class ClickDetector : MonoBehaviour
             // If something was pointed, end the pointing
             if (currentPointed != null)
             {
-                Debug.Log("Mouse over end: " + hit.collider.gameObject.name);
+                if(hit.collider != null)
+                    Debug.Log("Mouse over end: " + hit.collider.gameObject.name);
                 currentPointed.OnHoverEnd?.Invoke();
                 currentPointed = null;
             }

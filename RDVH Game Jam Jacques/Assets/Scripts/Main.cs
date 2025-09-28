@@ -14,6 +14,7 @@ public partial class Main : MonoBehaviour
     [Header("Levels Configs")]
     int contextStep;
     [SerializeField] public List<LevelContext> contexts;
+    [SerializeField] public LevelContext outroContext;
     private LevelContext currentLevelContext = null;
 
     public void Restart()
@@ -37,11 +38,14 @@ public partial class Main : MonoBehaviour
     {
         Debug.Log("Init First Step");
         detector.SetActive(false);
+        cardDeck.gameObject.SetActive(false);
+        attackDeck.gameObject.SetActive(false);
 
         contextStep = 0;
         if (contextStep < contexts.Count) // Get next level context
         {
             currentLevelContext = contexts[contextStep];
+            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
         }
         else // End Game
         {
@@ -50,17 +54,22 @@ public partial class Main : MonoBehaviour
             return;
         }
 
-        director.Init(currentLevelContext.levelEnvironment);
+        await director.Init(currentLevelContext.levelEnvironment);
 
         detector.SetActive(true);
+        cardDeck.gameObject.SetActive(true);
+        attackDeck.gameObject.SetActive(true);
     }
 
     public async void NextStep()
     {
         Debug.Log("Next Step");
-        director.CameraShake(0.2f, 0.005f);
-
         detector.SetActive(false);
+        cardDeck.gameObject.SetActive(false);
+        attackDeck.gameObject.SetActive(false);
+
+        await director.EndStep();
+
         if (currentLevelContext != null)
         {
             //Play destruction Animation
@@ -80,15 +89,16 @@ public partial class Main : MonoBehaviour
         {
             Debug.Log("End Game, GG!");
             currentLevelContext = null;
+            await director.GoToOutro(outroContext.levelEnvironment);
             return;
         }
 
         Debug.Log("Go to " + contextStep);
-        director.GoTo(currentLevelContext.levelEnvironment);
-
-        await Task.Delay(1000);
+        await director.GoTo(currentLevelContext.levelEnvironment);
 
         detector.SetActive(true);
+        cardDeck.gameObject.SetActive(true);
+        attackDeck.gameObject.SetActive(true);
     }
 
     public void OnCardSelected(Card card)

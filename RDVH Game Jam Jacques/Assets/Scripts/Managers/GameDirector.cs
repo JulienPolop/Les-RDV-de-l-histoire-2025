@@ -1,46 +1,62 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
     public Camera camera;
     public GameDirectorConfig config;
-    public GameObject VaubanFigurine;
+    public VaubanController VaubanController;
+    [SerializeField] DialogueController DialogController;
 
-    private Coroutine currentMove;
-    private Coroutine currentMoveVauban;
     private Coroutine currentShake;
 
-    public void Init(LevelEnvironment levelEnvironment)
+    public async Task Init(LevelEnvironment levelEnvironment)
     {
+        //ICI, faire l'intro
+
         camera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
+        await Task.Delay(2000);
+        // Démarre une nouvelle coroutine de déplacement
+        await MoveVauban(levelEnvironment.VaubanPosition.position);
+        // Dialogue de Vauban
+        await DialogController.RunAsync(levelEnvironment.VaubanDialog);
+
     }
 
-    public void GoTo(LevelEnvironment levelEnvironment)
+    public async Task EndStep()
+    {
+        CameraShake(0.2f, 0.005f);
+        VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
+        await Task.Delay(1000);
+        VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
+    }
+
+    public async Task GoTo(LevelEnvironment levelEnvironment)
     {
         //camera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
 
-        // Stoppe un éventuel déplacement en cours
-        if (currentMove != null)
-            StopCoroutine(currentMove);
 
         // Démarre une nouvelle coroutine de déplacement
-        currentMove = StartCoroutine(MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset));
-
-        if (currentMoveVauban != null)
-            StopCoroutine(currentMoveVauban);
+        Task camTask = MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset);
 
         // Démarre une nouvelle coroutine de déplacement
-        currentMoveVauban = StartCoroutine(MoveVauban(levelEnvironment.VaubanPosition.position));
+        Task vaubanTask = MoveVauban(levelEnvironment.VaubanPosition.position);
+
+        // Continuer seulement quand les 2 sont terminées
+        await Task.WhenAll(camTask, vaubanTask);
+
+        await DialogController.RunAsync(levelEnvironment.VaubanDialog);
     }
 
 
-    private IEnumerator MoveCamera(Vector3 target)
+    private async Task MoveCamera(Vector3 target)
     {
         Vector3 velocity = Vector3.zero;
 
         // Boucle jusqu’à ce qu’on soit assez proche
-        while ((camera.transform.position - target).sqrMagnitude > 0.0f * 0.0f)
+        while ((camera.transform.position - target).sqrMagnitude > 0.01f * 0.01f)
         {
             camera.transform.position = Vector3.SmoothDamp(
                 camera.transform.position,
@@ -51,19 +67,16 @@ public class GameDirector : MonoBehaviour
                 Time.deltaTime
             );
 
-            yield return null; // attend la prochaine frame
+            await Task.Yield(); // attend la prochaine frame
         }
 
         // Snap final
         camera.transform.position = target;
-
-        // Fin du déplacement
-        currentMove = null;
     }
 
-    private IEnumerator MoveVauban(Vector3 target)
+    private async Task MoveVauban(Vector3 target)
     {
-        Transform t = VaubanFigurine.transform;
+        Transform t = VaubanController.transform;
 
         // --- Réglages ---
         float rotateDuration = 0.2f;   // durée de rotation aller/retour
@@ -75,11 +88,11 @@ public class GameDirector : MonoBehaviour
         Quaternion startRot = t.rotation;
 
         Vector3 dir = (target - t.position);
-        // --- Rotation 2D (Z) ---
+        //// --- Rotation 2D (Z) ---
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + facingOffsetDeg;
         Quaternion faceRot = Quaternion.Euler(0f, 0f, angle);
 
-        // --- Si 3D top-down (Y up), utilise plutôt: ---
+        //// --- Si 3D top-down (Y up), utilise plutôt: ---
         Vector3 flatDir = new Vector3(dir.x, 0f, dir.z);
         if (flatDir.sqrMagnitude > 0.0001f) faceRot = Quaternion.LookRotation(flatDir, Vector3.up);
         else faceRot = t.rotation;
@@ -90,30 +103,30 @@ public class GameDirector : MonoBehaviour
             tRot += Time.deltaTime;
             float k = Mathf.Clamp01(tRot / rotateDuration);
             t.rotation = Quaternion.Slerp(startRot, faceRot, k);
-            yield return null;
+            await Task.Yield();
         }
         t.rotation = faceRot; // snap final d'orientation
 
         // 2) Se déplacer à vitesse constante jusqu’à target
+        VaubanController.SetAnimation(VaubanController.AnimState.RUN);
         while ((t.position - target).sqrMagnitude > stopDistance * stopDistance)
         {
             t.position = Vector3.MoveTowards(t.position, target, speed * Time.deltaTime);
-            yield return null;
+            await Task.Yield();
         }
         t.position = target; // snap final de position
 
         // 3) Revenir à l’angle initial en 0.2s
+        VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
         tRot = 0f;
         while (tRot < rotateDuration)
         {
             tRot += Time.deltaTime;
             float k = Mathf.Clamp01(tRot / rotateDuration);
             t.rotation = Quaternion.Slerp(faceRot, startRot, k);
-            yield return null;
+            await Task.Yield();
         }
         t.rotation = startRot;
-
-        currentMoveVauban = null;
     }
 
     public void CameraShake(float duration, float magnitude)
@@ -142,5 +155,14 @@ public class GameDirector : MonoBehaviour
 
         camera.transform.localPosition = originalPos;
         currentShake = null;
+    }
+
+    public async Task GoToOutro(LevelEnvironment levelEnvironment)
+    {
+        MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset);
+
+        await MoveVauban(levelEnvironment.VaubanPosition.position);
+
+        VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
     }
 }
