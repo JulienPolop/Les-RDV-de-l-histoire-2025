@@ -19861,7 +19861,7 @@ PrefabInstance:
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
       value: "Les forteresses de ce type se rendent rarement rapidement : il faudra
-        nous pr\xE9parer \xE0 mener un si\xE8ge, qui pourrait durer plusieurs mois.
+        nous pr\xE9parer \xE0 mener un si\xE8ge, qui pourrait durer plusieurs semaines.
         La premi\xE8re \xE9tape consiste \xE0 \xE9tablir notre <b>campement</b> afin
         d\u2019y loger l\u2019arm\xE9e et d\u2019organiser les pr\xE9paratifs. Cet
         emplacement serait parfait : nous sommes hors de port\xE9e des pi\xE8ces
