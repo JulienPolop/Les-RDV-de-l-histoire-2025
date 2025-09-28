@@ -11,6 +11,8 @@ public partial class Main : MonoBehaviour
     [SerializeField] private GameDirector director;
     [SerializeField] private ClickDetector detector;
 
+    [SerializeField] private TutoManager tutoManager;
+
     [Header("Levels Configs")]
     int contextStep;
     [SerializeField] public List<LevelContext> contexts;
@@ -56,9 +58,12 @@ public partial class Main : MonoBehaviour
 
         await director.Init(currentLevelContext.levelEnvironment);
 
-        detector.SetActive(true);
+        tutoManager.gameObject.SetActive(true);
+        await tutoManager.StartTuto();
+
         cardDeck.gameObject.SetActive(true);
         attackDeck.gameObject.SetActive(true);
+        detector.SetActive(true);
     }
 
     public async void NextStep()

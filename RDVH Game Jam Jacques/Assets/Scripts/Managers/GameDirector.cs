@@ -10,6 +10,9 @@ public class GameDirector : MonoBehaviour
     public VaubanController VaubanController;
     [SerializeField] DialogueController DialogController;
 
+    [SerializeField]
+    private GameObject UIFin;
+
     private Coroutine currentShake;
 
     public async Task Init(LevelEnvironment levelEnvironment)
@@ -164,5 +167,9 @@ public class GameDirector : MonoBehaviour
         await MoveVauban(levelEnvironment.VaubanPosition.position);
 
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
+
+        await Task.Delay(5000);
+
+        UIFin.SetActive(true);
     }
 }
