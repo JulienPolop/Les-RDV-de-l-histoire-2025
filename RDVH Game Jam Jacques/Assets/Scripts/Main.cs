@@ -26,6 +26,12 @@ public partial class Main : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void LoadMainMenu()
+    {
+        // Load the first scene of the game
+        SceneManager.LoadScene(0);
+    }
+
     public void Start()
     {
         StartCoroutine(fadeController.FadeIn());
