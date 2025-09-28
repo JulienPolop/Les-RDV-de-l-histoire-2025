@@ -2420,8 +2420,8 @@ MonoBehaviour:
     roi Louis XIV vous a demand\xE9 de reprendre \xE0 tout pris la forteresse que
     l'on voit la bas. Comme elle est de ma conception, je suis ici pour vous y aider."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 66da54c3f7fc7284e8b2efee1bdbad5f, type: 2}
-  m_sharedMaterial: {fileID: -2464596569485330279, guid: 66da54c3f7fc7284e8b2efee1bdbad5f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+  m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

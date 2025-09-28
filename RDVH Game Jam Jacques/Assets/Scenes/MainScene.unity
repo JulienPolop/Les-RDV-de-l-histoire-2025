@@ -1920,6 +1920,20 @@ PrefabInstance:
       propertyPath: playableDirector
       value: 
       objectReference: {fileID: 97149987}
+    - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
+      propertyPath: VaubanDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
+      propertyPath: 'VaubanDialog.Array.data[0]'
+      value: "Bravo! Le fort est presque \xE0 nous, il ne nous reste plus qu'a capturer
+        la porte de la ville! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544824080401343646, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
+      propertyPath: 'VaubanDialog.Array.data[1]'
+      value: "Nous allons leur faire <b>battre la chamade</b> au tambours, ils n'auront
+        d'autre choix que d'engager des pourparlers et de n\xE9gocier une reddition."
+      objectReference: {fileID: 0}
     - target: {fileID: 8478772750452916893, guid: fbe8a2431026055428da7c46ffba7ee2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3589,6 +3603,22 @@ PrefabInstance:
       propertyPath: playableDirector
       value: 
       objectReference: {fileID: 224892802}
+    - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
+      propertyPath: VaubanDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
+      propertyPath: 'VaubanDialog.Array.data[0]'
+      value: "Nous ne somme plus tr\xE8s loin!\\nNous avons pris la <b>demie-Lune</b>
+        et avons travers\xE9 le <b>foss\xE9 sec</b>! Mais avant de pouvoir attaquer
+        la porte, il va falloir prendre d'assaut les <b>Bastions</b> \\n Ce sont
+        ces grosses fortifications aux angles de chaque murs. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685176716408122490, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
+      propertyPath: 'VaubanDialog.Array.data[1]'
+      value: "D'ici, nous sommes pris entre les feux des deux bastions prot\xE9geant
+        la porte, alors pas le choix...\\n\\n A l'assaut! "
+      objectReference: {fileID: 0}
     - target: {fileID: 8139606753087567227, guid: 79ea06083f9584a42bfe7ec9070086af, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6633,81 +6663,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af04210cae865cb4ca26ca94b5ba45b4, type: 3}
   m_PrefabInstance: {fileID: 505672956}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &407577240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 407577241}
-  - component: {fileID: 407577243}
-  - component: {fileID: 407577242}
-  m_Layer: 5
-  m_Name: Vauban
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &407577241
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407577240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1606454366}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 343.2, y: -36.7}
-  m_SizeDelta: {x: 150, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &407577242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407577240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f80b83f819ea524098c8fc1434aeab0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &407577243
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407577240}
-  m_CullTransparentMesh: 1
 --- !u!1001 &411088926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9088,17 +9043,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
-      value: "Ahah! Je savais que ces tranch\xE9es serais utiles! \\nNous sommes
+      value: "Ahah! Je savais que ces tranch\xE9es seraient utiles! \\nNous sommes
         maintenants aux pieds des remparts. Nous allons pouvoir passer \xE0 l'attaque
         de la forteresse! \\nLa premi\xE8re \xE9tape va \xEAtre de s'emparer de cette
-        <b>Demi-lune</b>, cette fortification avanc\xE9e qui prot\xE8ge la porte."
+        <b>Demi-lune</b>, cette fortification avanc\xE9e qui prot\xE8ge la porte. "
       objectReference: {fileID: 0}
     - target: {fileID: 848661533573403685, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
       value: "Cela ne sera pas une mince \xE0 faire, les ennemis y sont barriquad\xE9,
         \\net avec sa forme triangulaire, ils peuvent tirer de tous les angles! \\n
         Nous allons devoir utiliser nos <b>canons</b> pour cr\xE9er des br\xEAches,
-        puis attaquer avec nos soldats..."
+        puis attaquer avec nos soldats... "
       objectReference: {fileID: 0}
     - target: {fileID: 1650603546346249341, guid: bffb49542e882bb4c9a10ad70fe16729, type: 3}
       propertyPath: m_LocalScale.x
@@ -19875,16 +19830,16 @@ PrefabInstance:
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[0]'
       value: "Bonjour G\xE9n\xE9ral. Je suis le <color=red><b>Marquis de Vauban</b></color>.\\r\\n\\r\\nLe
-        roi Louis XIV vous a demand\xE9 de reprendre \xE0 tout pris la forteresse
-        que l'on voit la bas. Comme elle est de ma conception, je suis ici pour vous
-        y aider."
+        roi Louis XIV vous a ordonn\xE9 de reprendre \xE0 tout pris la forteresse
+        que l'on voit l\xE0 bas. Puisqu'elle est construite selon mes plans, je suis
+        ici pour vous y aider."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
       propertyPath: 'VaubanDialog.Array.data[1]'
       value: "Les forteresses de ce types sont tr\xE8s longues \xE0 capturer.\\nPour
         cela nous devons effectuer un si\xE8ge, qui pourrais durer plusieurs mois.
         La premi\xE8re \xE9tape va \xEAtre d'installer notre <b>campement</b>, pour
-        installer botre arm\xE9e et commencer les pr\xE9paratifs. Ici serait l'endroit
+        installer notre arm\xE9e et commencer les pr\xE9paratifs. Ici serait l'endroit
         parfait, nous somme hors de port\xE9e des armes ennemies."
       objectReference: {fileID: 0}
     - target: {fileID: 8849915560660052098, guid: f5a15cd0594715044b3ac975d0b04676, type: 3}
@@ -20637,8 +20592,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4292016890
+  m_fontColor: {r: 0.9803922, g: 0.9803922, b: 0.8235295, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20693,7 +20648,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 10, y: 10, z: 10, w: 10}
+  m_margin: {x: 46.9346, y: 84.17384, z: 371.5477, w: 59.28991}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -24758,17 +24713,17 @@ RectTransform:
   m_GameObject: {fileID: 1401211654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7368467, y: 0.7368467, z: 0.7368467}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1181640978}
   m_Father: {fileID: 1606454366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05, y: 0.05}
-  m_AnchorMax: {x: 0.95, y: 0.35}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 1038, y: 355}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1401211656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24782,14 +24737,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 63cfea9e1ac098c4dbbe7fd5897eeb29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28849,7 +28804,6 @@ RectTransform:
   m_Children:
   - {fileID: 1401211655}
   - {fileID: 567393778}
-  - {fileID: 407577241}
   m_Father: {fileID: 782418963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -39100,13 +39054,13 @@ PrefabInstance:
         la premi\xE8re ligne de d\xE9fense d'une forteresse Vauban! Sans protection,
         ici, notre arm\xE9e serait compl\xE8tement \xE0 d\xE9couvert des tirs ennemis!\\nMais
         pas de panique, nous allons creuser des <b>Tranch\xE9es d'approches</b>,
-        pour se prot\xE9ger lors de notre assault."
+        pour se prot\xE9ger lors de notre assault. "
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[2]'
       value: "Ce sont des tranch\xE9es, creus\xE9es en zigzag\\npour \xE9viter les
         tirs en enfilade adverses. Elles sont utilis\xE9e pour amasser nos armes
-        et nos troupes troupes avant d'attaquer."
+        et nos troupes troupes avant d'attaquer. "
       objectReference: {fileID: 0}
     - target: {fileID: 6743457795339146925, guid: e28685b453055124fbfd852c6f75d22d, type: 3}
       propertyPath: 'VaubanDialog.Array.data[3]'
@@ -40232,15 +40186,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7b40f770c86231a4dab5684a924bf1ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.04
+      value: -1.196
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7b40f770c86231a4dab5684a924bf1ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.503
+      value: -0.455
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7b40f770c86231a4dab5684a924bf1ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.38
+      value: -1.177
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7b40f770c86231a4dab5684a924bf1ef, type: 3}
       propertyPath: m_LocalRotation.w
