@@ -40,6 +40,7 @@ public class CardDeck : MonoBehaviour
     private void OnHoverStart(Card card)
     {
         this.descriptor.Describe(card.Data);
+        AudioManager.Play("cardHoover");
         card.OnHoverStart();
     }
 
