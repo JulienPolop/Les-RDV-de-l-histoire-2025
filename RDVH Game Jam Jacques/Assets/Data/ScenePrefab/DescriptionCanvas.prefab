@@ -28,7 +28,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502991207794355034}
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 0, z: 0.191}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.009, y: -0.0164}
-  m_SizeDelta: {x: 50, y: 18}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 341.33334, y: 125}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!223 &2959523781857967536
 Canvas:
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6453576699881379884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_text: "Description ! C'est long mais c'est pas si mal uand on a des d\xE9tails
     quand meme"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0f2966378c344584484d77139f576b46, type: 2}
-  m_sharedMaterial: {fileID: 2894220020788925757, guid: 0f2966378c344584484d77139f576b46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+  m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -285,7 +285,7 @@ RectTransform:
   m_GameObject: {fileID: 3001642788484919215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6134527584843690513}
@@ -400,8 +400,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MOUSTEQU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0f2966378c344584484d77139f576b46, type: 2}
-  m_sharedMaterial: {fileID: 2894220020788925757, guid: 0f2966378c344584484d77139f576b46, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+  m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
