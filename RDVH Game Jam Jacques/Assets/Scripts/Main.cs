@@ -12,6 +12,7 @@ public partial class Main : MonoBehaviour
     [SerializeField] private ClickDetector detector;
 
     [SerializeField] private TutoManager tutoManager;
+    [SerializeField] private FadeController fadeController;
 
     [Header("Levels Configs")]
     int contextStep;
@@ -27,6 +28,8 @@ public partial class Main : MonoBehaviour
 
     public void Start()
     {
+        StartCoroutine(fadeController.FadeIn());
+
         // Setup
         this.cardDeck.Init(OnCardSelected);
         this.attackDeck.Init(OnDeckFull);
