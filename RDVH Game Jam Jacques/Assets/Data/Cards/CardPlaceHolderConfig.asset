@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CardPlaceHolderConfig
   m_EditorClassIdentifier: Assembly-CSharp::CardPlaceHolderConfig
   FlagMaterial:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.86054194, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0.5458698, a: 1}
+  - {r: 0.7764706, g: 0.5921569, b: 0.4431373, a: 1}
+  - {r: 0.47843137, g: 0.60784316, b: 0.7294118, a: 1}
+  - {r: 0.78039217, g: 0.44705883, b: 0.44313726, a: 1}
   ASPIRE_DELAY: 0.5
   ASPIRE_DURATION: 0.5
   ASPIRE_ENDPAUSE: 0.5
