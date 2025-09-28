@@ -104,6 +104,8 @@ public partial class Main : MonoBehaviour
         detector.SetActive(true);
         cardDeck.gameObject.SetActive(true);
         attackDeck.gameObject.SetActive(true);
+
+        cardDeck.ReRoll();
     }
 
     public void OnCardSelected(Card card)

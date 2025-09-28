@@ -43,7 +43,7 @@ public class CardDeck : MonoBehaviour
         card.OnHoverStart();
     }
 
-    private async void ReRoll()
+    public async void ReRoll()
     {
         rerollInteractor.Interactable = false;
 
