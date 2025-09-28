@@ -44,7 +44,8 @@ public class CardPlaceHolder : MonoBehaviour
         }
 
         this.card.transform.position = finalPosition;
-        this.image.enabled = false; 
+        this.image.enabled = false;
+        AudioManager.Play("cardPlaced");
         await Task.Delay(TimeSpan.FromSeconds(config.ASPIRE_ENDPAUSE));
     }
 

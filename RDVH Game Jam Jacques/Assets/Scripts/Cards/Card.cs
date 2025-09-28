@@ -51,6 +51,7 @@ public class Card : MonoBehaviour
     public void Validate()
     {
         this.animator.SetTrigger("validate");
+        AudioManager.Play("cardSelected");
     }
 
     public void Wrong()
@@ -61,5 +62,6 @@ public class Card : MonoBehaviour
     public void Attack()
     {
         this.animator.SetTrigger("attack");
+        AudioManager.Play("canon");
     }
 }

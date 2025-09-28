@@ -75,6 +75,7 @@ public class CardDeck : MonoBehaviour
     public void WrongRemove(Card card)
     {
         card.Wrong();
+        // TODO SON ?
     }
 
     public void Remove(Card card)
