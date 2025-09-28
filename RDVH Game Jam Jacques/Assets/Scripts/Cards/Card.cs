@@ -78,8 +78,8 @@ public class Card : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.POP_RANDOM_DELAY)));
-        this.animator.SetTrigger("pop");
         this.gameObject.SetActive(true);
+        this.animator.SetTrigger("pop");
         await Task.Delay(TimeSpan.FromSeconds(config.ANIMATION_POP_WAITING_TIME));
     }
 
