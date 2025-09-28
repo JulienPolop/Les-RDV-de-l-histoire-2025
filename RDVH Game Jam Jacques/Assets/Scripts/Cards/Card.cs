@@ -13,18 +13,45 @@ public class Card : MonoBehaviour
     [SerializeField] private Animator animator;
     [Space(20)]
     [SerializeField] private Renderer visualRenderer;
-    [SerializeField] private TextMeshProUGUI textComponent;
 
-    public void Start()
-    {
-        interactor.OnHoverStart = () => this.animator.SetBool("hover", true); 
-        interactor.OnHoverEnd = () => this.animator.SetBool("hover", false);
-    }
+    public void OnHoverStart() => this.animator.SetBool("hover", true); 
+    public void OnHoverEnd() => this.animator.SetBool("hover", false);
 
     public void Set(CardData pickedCardData)
     {
         data = pickedCardData;
-        textComponent.text = pickedCardData.Title;
+
+                // Duplicate materials so we don’t modify shared assets
+        Material[] newMaterials = new Material[visualRenderer.materials.Length];
+        for (int i = 0; i < visualRenderer.materials.Length; i++)
+        {
+            newMaterials[i] = new Material(visualRenderer.materials[i]);
+        }
+
+        // Replace with the duplicated array
+        visualRenderer.materials = newMaterials;
+
+        // Modify each one based on its index
+        if (newMaterials.Length > 0)
+        {
+            //Don't change the back of card, it is constant
+        }
+        if (newMaterials.Length > 1)
+        {
+            newMaterials[1].mainTexture = pickedCardData.BackTexture; // second: change texture of background
+        }
+        if (newMaterials.Length > 2)
+        {
+            newMaterials[2].color = pickedCardData.BorderColor;
+        }
+        if (newMaterials.Length > 3)
+        {
+            newMaterials[3].mainTexture = pickedCardData.IllustrationTexture;
+        }
+        if (newMaterials.Length > 4)
+        {
+            newMaterials[4].mainTexture = pickedCardData.BandTexture;
+        }
     }
 
     public void Randomizeidle()

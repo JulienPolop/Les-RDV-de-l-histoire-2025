@@ -10,4 +10,3 @@ public class CardDeckConfig : ScriptableObject
     public Quaternion CARD_ORIENTATION;
     public float REROLL_DELAY = 1f;
 }
-

@@ -15,6 +15,7 @@ public class CardDeck : MonoBehaviour
     [Space(20)]
     [SerializeField] private InteractWithPoint rerollInteractor;
     [SerializeField] private ClocheController bellController;
+    [SerializeField] private CardDescriptor descriptor;
 
     private List<Card> cards = new();
 
@@ -28,6 +29,18 @@ public class CardDeck : MonoBehaviour
     {
         bellController.RingBell();
         ReRoll();
+    }
+
+    private void OnHoverEnd(Card card)
+    {
+        this.descriptor.Hide();
+        card.OnHoverEnd();
+    }
+
+    private void OnHoverStart(Card card)
+    {
+        this.descriptor.Describe(card.Data);
+        card.OnHoverStart();
     }
 
     private async void ReRoll()
@@ -60,6 +73,8 @@ public class CardDeck : MonoBehaviour
             CardData pickedCardConfig = this.PickPrefab();
             Card newCard = GameObject.Instantiate(config.CardPrefab, DeckZone.transform.position + localPosition, config.CARD_ORIENTATION, DeckZone);
             newCard.Interactor.OnClick = () => OnCardCliked(newCard);
+            newCard.Interactor.OnHoverEnd = () => OnHoverEnd(newCard);
+            newCard.Interactor.OnHoverStart = () => OnHoverStart(newCard);
             newCard.Set(pickedCardConfig);
             newCard.Pop();
             cards.Add(newCard);

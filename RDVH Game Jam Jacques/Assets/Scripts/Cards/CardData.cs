@@ -6,9 +6,11 @@ public class CardData : ScriptableObject
     public CardFlag flag = CardFlag.Building;
 
     public string Title;
-    public string Description;
+    [TextArea]public string Description;
+    public Sprite DescriptionImage;
 
-    public Material cardMaterial;
-    public Material topCardMaterial;
-    public Material buttonCardMaterial;
+    public Texture2D IllustrationTexture;
+    public Texture2D BandTexture;
+    public Texture2D BackTexture;
+    public Color BorderColor;
 }

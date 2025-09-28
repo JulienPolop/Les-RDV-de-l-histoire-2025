@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e2395956aa14e49893c3d0d527d292, type: 3}
+  m_Name: CardData_Soldat
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  flag: 1
+  Title: SOLDAT
+  Description: "Les troupes d\u2019infanterie se composent majoritairement de mousquetaires,
+    qu\u2019il faut distinguer du Mousquetaire du roi. Le mousquetaire d\xE9signe
+    le fantassin arm\xE9 d\u2019un mousquet. \r\n\r\nLors des assauts, les mousquetaires
+    suivent directement les Mousquetaires du roi et les grenadiers pour continuer
+    le combat."
+  DescriptionImage: {fileID: 21300000, guid: a03fd977ede06ce49bad9454e108b24b, type: 3}
+  IllustrationTexture: {fileID: 2800000, guid: 8a79d1c731f65364fa2535fc538b2183, type: 3}
+  BandTexture: {fileID: 2800000, guid: c1f763f655ca7654cb939a6e3e2cc636, type: 3}
+  BackTexture: {fileID: 2800000, guid: f7bbcbeffdd81f341aa870339f2dade1, type: 3}
+  BorderColor: {r: 0.43529412, g: 0.57254905, b: 0.7019608, a: 1}

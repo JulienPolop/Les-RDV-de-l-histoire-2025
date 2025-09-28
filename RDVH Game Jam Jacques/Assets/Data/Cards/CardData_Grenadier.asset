@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: CardData_Grenadier
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   flag: 1
-  Title: Grenadier
-  Description: 
-  cardMaterial: {fileID: 0}
-  topCardMaterial: {fileID: 0}
-  buttonCardMaterial: {fileID: 0}
+  Title: GRENADIER
+  Description: "Les grenadiers conduisent les assauts avec les Mousquetaires du roi.
+    Ils sont choisis parmi les soldats les plus robustes et les plus endurants de
+    l\u2019arm\xE9e. \r\n\r\nUne fois au pied des murailles ennemies, ils lancent
+    leurs bombes et mettent alors l\u2019\xE9p\xE9e \xE0 la main pour combattre au
+    corps \xE0 corps aux c\xF4t\xE9s des Mousquetaires."
+  DescriptionImage: {fileID: 21300000, guid: 54bda8bd07838ea4a802389191cec338, type: 3}
+  IllustrationTexture: {fileID: 2800000, guid: 64bb3feb62d1b354b81368872771dec3, type: 3}
+  BandTexture: {fileID: 2800000, guid: c1f763f655ca7654cb939a6e3e2cc636, type: 3}
+  BackTexture: {fileID: 2800000, guid: f7bbcbeffdd81f341aa870339f2dade1, type: 3}
+  BorderColor: {r: 0.43529415, g: 0.57254905, b: 0.7019608, a: 1}
