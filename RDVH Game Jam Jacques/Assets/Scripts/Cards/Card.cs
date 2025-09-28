@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -63,21 +65,26 @@ public class Card : MonoBehaviour
         this.animator.Play("Idle", 0, randomOffset);
     }
 
-    public void Depop()
+    public async Task Depop()
     {
+        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.DEPOP_RANDOM_DELAY)));
         this.interactor.Interactable = false;
         this.animator.SetTrigger("depop");
-        Destroy(this.gameObject, config.DESTROY_DELAY);
+        await Task.Delay(TimeSpan.FromSeconds(config.ANIMATION_DEPOP_WAITING_TIME));
+        Destroy(this.gameObject);
     }
 
-    public void Pop()
+    public async Task Pop()
     {
+        this.gameObject.SetActive(false);
+        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.POP_RANDOM_DELAY)));
         this.animator.SetTrigger("pop");
+        this.gameObject.SetActive(true);
+        await Task.Delay(TimeSpan.FromSeconds(config.ANIMATION_POP_WAITING_TIME));
     }
 
     public void Validate()
     {
-        this.animator.SetTrigger("validate");
         AudioManager.Play("cardSelected");
     }
 
@@ -86,9 +93,17 @@ public class Card : MonoBehaviour
         this.animator.SetTrigger("wrong");
     }
 
-    public void Attack()
+    public async Task Attack()
     {
+        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.ATTACK_RANDOM_DELAY)));
         this.animator.SetTrigger("attack");
+        await Task.Delay(TimeSpan.FromSeconds(config.ATTACK_SOUND_DELAY));
         AudioManager.Play("canon");
+    }
+
+    public void Placed()
+    {
+        this.animator.SetTrigger("validate");
+        AudioManager.Play("cardPlaced");
     }
 }

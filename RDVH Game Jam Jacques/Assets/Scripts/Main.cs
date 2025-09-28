@@ -125,9 +125,10 @@ public partial class Main : MonoBehaviour
         }
     }
 
-    public void OnDeckFull()
+    public async void OnDeckFull()
     {
-        attackDeck.Attack();
+        await attackDeck.Attack();
+        await Task.Delay(TimeSpan.FromSeconds(0.5f));
         NextStep();
     }
 }

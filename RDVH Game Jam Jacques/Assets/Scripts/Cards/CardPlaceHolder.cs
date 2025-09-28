@@ -45,7 +45,7 @@ public class CardPlaceHolder : MonoBehaviour
 
         this.card.transform.position = finalPosition;
         this.image.enabled = false;
-        AudioManager.Play("cardPlaced");
+        this.card.Placed();
         await Task.Delay(TimeSpan.FromSeconds(config.ASPIRE_ENDPAUSE));
     }
 
@@ -60,10 +60,11 @@ public class CardPlaceHolder : MonoBehaviour
         this.image.color = colorEnd;
     }
 
-    public void Attack()
+    public async Task Attack()
     {
-        if(!IsEmpty)Card.Attack();
-        GameObject.Destroy(this.gameObject, config.DESTROY_DELAY);
+        if(!IsEmpty) await Card.Attack();
+        await Task.Delay(TimeSpan.FromSeconds(config.DESTROY_DELAY));
+        GameObject.Destroy(this.gameObject);
     }
 
     public Image image;

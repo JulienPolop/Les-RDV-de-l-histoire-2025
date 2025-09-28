@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709ba67b0c89ea54ab07e2f5439df050, type: 3}
   m_Name: CardConfig
   m_EditorClassIdentifier: Assembly-CSharp::CardConfig
-  color: {r: 0, g: 0, b: 0, a: 0}
-  flag: 2
-  Title: Canon
-  Description: 
+  cardMaterialIndex: 0
+  topCardMaterialIndex: 0
+  buttonCardMaterialIndex: 0
+  flagMaterialIndex: 0
+  FlagMaterial: []
+  ATTACK_SOUND_DELAY: 0.5
+  ATTACK_RANDOM_DELAY: 0.6
+  DEPOP_RANDOM: 0.5
+  DEPOP_RANDOM_DELAY: 0.6
+  POP_RANDOM_DELAY: 0.6
+  ANIMATION_DEPOP_WAITING_TIME: 0.8
+  ANIMATION_POP_WAITING_TIME: 1

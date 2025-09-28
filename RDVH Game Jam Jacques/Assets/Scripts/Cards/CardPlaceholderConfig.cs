@@ -9,6 +9,6 @@ public class CardPlaceHolderConfig : ScriptableObject
     public float ASPIRE_DURATION = 0.5f;
     public float ASPIRE_ENDPAUSE = 0.5f;
     public AnimationCurve aspireCurve;
-    public float DESTROY_DELAY = 0.5f;
+    public float DESTROY_DELAY = 0.3f;
     public float POP_DURATION = 1f;
 }

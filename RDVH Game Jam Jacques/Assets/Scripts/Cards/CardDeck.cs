@@ -47,19 +47,21 @@ public class CardDeck : MonoBehaviour
     {
         rerollInteractor.Interactable = false;
 
-        DestroyHand();
-        await Task.Delay(TimeSpan.FromSeconds(config.REROLL_DELAY));
+        await DestroyHand();
         CompleteHand();
 
         rerollInteractor.Interactable = true;
     }
 
-    public void DestroyHand()
+    public async Task DestroyHand()
     {
-        foreach (Card card in cards)
+        Task[] tasks = new Task[cards.Count];
+        for (int i = 0; i < cards.Count; i++)
         {
-            card.Depop();
+            tasks[i] = cards[i].Depop();
         }
+
+        await Task.WhenAll(tasks);
         cards = new();
     }
 
@@ -76,7 +78,7 @@ public class CardDeck : MonoBehaviour
             newCard.Interactor.OnHoverEnd = () => OnHoverEnd(newCard);
             newCard.Interactor.OnHoverStart = () => OnHoverStart(newCard);
             newCard.Set(pickedCardConfig);
-            newCard.Pop();
+            _ = newCard.Pop();
             cards.Add(newCard);
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class AttackDeck : MonoBehaviour
@@ -26,12 +27,15 @@ public class AttackDeck : MonoBehaviour
         CompleteHand();
     }
 
-    public void Attack()
+    public async Task Attack()
     {
-        foreach (CardPlaceHolder cardholder in cardHolders)
+        Task[] tasks = new Task[cardHolders.Count];
+        for (int i = 0; i < cardHolders.Count; i++)
         {
-            cardholder.Attack(); 
+            tasks[i] = cardHolders[i].Attack();
         }
+
+        await Task.WhenAll(tasks);
         cardHolders = new();
     }
 
