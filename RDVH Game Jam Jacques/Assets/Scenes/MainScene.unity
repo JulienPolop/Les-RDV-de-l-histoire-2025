@@ -19482,7 +19482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99702a64f8ba66049aa4e57e900889d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameDirector
-  camera: {fileID: 1849826437}
+  MainCamera: {fileID: 1849826437}
   config: {fileID: 11400000, guid: 6bf604751d697014b8bc40599c601bd9, type: 2}
   VaubanController: {fileID: 1736810453}
   DialogController: {fileID: 782418964}

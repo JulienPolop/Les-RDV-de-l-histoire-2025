@@ -1,12 +1,11 @@
-using System;
-using System.Threading.Tasks;
+using System.Collections;
 using TMPro;
 using UnityEngine;
-
 
 public class Card : MonoBehaviour
 {
     public InteractWithPoint Interactor => interactor;
+
     [SerializeField] private CardConfig config;
     [Space(20)]
     private CardData data;
@@ -16,71 +15,59 @@ public class Card : MonoBehaviour
     [Space(20)]
     [SerializeField] private Renderer visualRenderer;
 
-    public void OnHoverStart() => this.animator.SetBool("hover", true); 
+    public void OnHoverStart() => this.animator.SetBool("hover", true);
     public void OnHoverEnd() => this.animator.SetBool("hover", false);
 
     public void Set(CardData pickedCardData)
     {
         data = pickedCardData;
 
-                // Duplicate materials so we don’t modify shared assets
+        // Dupliquer les materials pour éviter de modifier les assets partagés
         Material[] newMaterials = new Material[visualRenderer.materials.Length];
         for (int i = 0; i < visualRenderer.materials.Length; i++)
-        {
             newMaterials[i] = new Material(visualRenderer.materials[i]);
-        }
 
-        // Replace with the duplicated array
         visualRenderer.materials = newMaterials;
 
-        // Modify each one based on its index
-        if (newMaterials.Length > 0)
-        {
-            //Don't change the back of card, it is constant
-        }
         if (newMaterials.Length > 1)
-        {
-            newMaterials[1].mainTexture = pickedCardData.BackTexture; // second: change texture of background
-        }
+            newMaterials[1].mainTexture = pickedCardData.BackTexture;     // bg
         if (newMaterials.Length > 2)
-        {
-            newMaterials[2].color = pickedCardData.BorderColor;
-        }
+            newMaterials[2].color = pickedCardData.BorderColor;           // border
         if (newMaterials.Length > 3)
-        {
-            newMaterials[3].mainTexture = pickedCardData.IllustrationTexture;
-        }
+            newMaterials[3].mainTexture = pickedCardData.IllustrationTexture; // illustration
         if (newMaterials.Length > 4)
-        {
-            newMaterials[4].mainTexture = pickedCardData.BandTexture;
-        }
+            newMaterials[4].mainTexture = pickedCardData.BandTexture;     // band
     }
 
     public void Randomizeidle()
     {
-        // Pick a random normalized time (0 = start, 1 = end)
         float randomOffset = UnityEngine.Random.value;
-
-        // Force the idle state to play starting at that random point
         this.animator.Play("Idle", 0, randomOffset);
     }
 
-    public async Task Depop()
+    // ---- Coroutines (mêmes noms) ----
+
+    public IEnumerator Depop()
     {
-        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.DEPOP_RANDOM_DELAY)));
-        this.interactor.Interactable = false;
+        yield return new WaitForSeconds(Random.Range(0f, config.DEPOP_RANDOM_DELAY));
+
+        if (interactor) interactor.Interactable = false;
         this.animator.SetTrigger("depop");
-        await Task.Delay(TimeSpan.FromSeconds(config.ANIMATION_DEPOP_WAITING_TIME));
+
+        yield return new WaitForSeconds(config.ANIMATION_DEPOP_WAITING_TIME);
+
         Destroy(this.gameObject);
     }
 
-    public async Task Pop()
+    public IEnumerator Pop()
     {
         this.gameObject.SetActive(false);
-        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.POP_RANDOM_DELAY)));
+        yield return new WaitForSeconds(Random.Range(0f, config.POP_RANDOM_DELAY));
+
         this.gameObject.SetActive(true);
         this.animator.SetTrigger("pop");
-        await Task.Delay(TimeSpan.FromSeconds(config.ANIMATION_POP_WAITING_TIME));
+
+        yield return new WaitForSeconds(config.ANIMATION_POP_WAITING_TIME);
     }
 
     public void Validate()
@@ -93,11 +80,14 @@ public class Card : MonoBehaviour
         this.animator.SetTrigger("wrong");
     }
 
-    public async Task Attack()
+    public IEnumerator Attack()
     {
-        await Task.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, config.ATTACK_RANDOM_DELAY)));
+        yield return new WaitForSeconds(Random.Range(0f, config.ATTACK_RANDOM_DELAY));
+
         this.animator.SetTrigger("attack");
-        await Task.Delay(TimeSpan.FromSeconds(config.ATTACK_SOUND_DELAY));
+
+        yield return new WaitForSeconds(config.ATTACK_SOUND_DELAY);
+
         AudioManager.Play("canon");
     }
 

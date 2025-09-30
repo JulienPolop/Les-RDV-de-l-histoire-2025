@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading; // pour CancellationToken
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +11,11 @@ public class TutoManager : MonoBehaviour
     [SerializeField] private List<Image> pages;      // chaque page est une Image (UI)
     [SerializeField] private Button nextButton;      // bouton "Next"
 
-    private TaskCompletionSource<bool> _clickTcs;
-    private CancellationTokenSource _runCts;
+    // Remplacements coroutine-friendly
+    private bool _clickRequested;
+    private bool _cancelRequested;
+    private CancellationToken _externalToken;
+
     private bool _isRunning;
 
     void Awake()
@@ -23,78 +26,81 @@ public class TutoManager : MonoBehaviour
 
     void OnDisable()
     {
-        _runCts?.Cancel();
+        // annule si l'objet est désactivé
+        _cancelRequested = true;
     }
 
     /// <summary>
     /// Lance le tuto et ne rend la main qu'après le dernier clic sur "Next".
+    /// (Coroutine)
     /// </summary>
-    public async Task StartTuto(CancellationToken externalToken = default)
+    public IEnumerator StartTuto(CancellationToken externalToken = default)
     {
-        if (_isRunning) return; // évite la réentrance
+        if (_isRunning) yield break; // évite la réentrance
         _isRunning = true;
 
-        _runCts?.Cancel();
-        _runCts = CancellationTokenSource.CreateLinkedTokenSource(externalToken);
-        var token = _runCts.Token;
+        _cancelRequested = false;
+        _externalToken = externalToken;
 
         nextButton.onClick.AddListener(OnNextClicked);
 
-        try
+        if (uiTuto) uiTuto.SetActive(true);
+        HideAllPages();
+
+        if (pages != null && pages.Count > 0)
         {
-            if (uiTuto) uiTuto.SetActive(true);
-            HideAllPages();
+            // Affiche la 1ère page
+            ShowPage(0);
 
-            if (pages != null && pages.Count > 0)
+            // Pour chaque page sauf la dernière : attendre clic, passer à la suivante
+            for (int i = 0; i < pages.Count - 1; i++)
             {
-                // Affiche la 1ère page
-                ShowPage(0);
+                yield return WaitNextClick(externalToken);
+                if (IsCancelled()) break;
 
-                // Pour chaque page sauf la dernière : attendre clic, passer à la suivante
-                for (int i = 0; i < pages.Count - 1; i++)
-                {
-                    await WaitNextClickAsync(token);
-                    HidePage(i);
-                    ShowPage(i + 1);
-                }
+                HidePage(i);
+                ShowPage(i + 1);
+            }
 
+            if (!IsCancelled())
+            {
                 // Dernière page visible → attendre un dernier clic
-                await WaitNextClickAsync(token);
+                yield return WaitNextClick(externalToken);
             }
-            else
-            {
-                // Pas de pages ? On attend un clic, puis on ferme.
-                await WaitNextClickAsync(token);
-            }
-
-            // Fermer le tuto
-            HideAllPages();
-            if (uiTuto) uiTuto.SetActive(false);
         }
-        finally
+        else
         {
-            nextButton.onClick.RemoveListener(OnNextClicked);
-            _clickTcs = null;
-            _isRunning = false;
+            // Pas de pages ? On attend un clic, puis on ferme.
+            yield return WaitNextClick(externalToken);
         }
+
+        // Fermer le tuto
+        HideAllPages();
+        if (uiTuto) uiTuto.SetActive(false);
+
+        nextButton.onClick.RemoveListener(OnNextClicked);
+        _isRunning = false;
     }
 
     // ====== Helpers ======
 
+    private bool IsCancelled()
+        => _cancelRequested || (_externalToken.CanBeCanceled && _externalToken.IsCancellationRequested);
+
     private void OnNextClicked()
     {
-        _clickTcs?.TrySetResult(true);
+        _clickRequested = true;
     }
 
-    private Task WaitNextClickAsync(CancellationToken token)
+    public IEnumerator WaitNextClick(CancellationToken token)
     {
-        _clickTcs = new TaskCompletionSource<bool>();
-        var reg = token.Register(() => _clickTcs.TrySetCanceled());
-        return _clickTcs.Task.ContinueWith(t =>
+        _clickRequested = false;
+        while (!_clickRequested)
         {
-            reg.Dispose();
-            return t;
-        }, TaskScheduler.Current).Unwrap();
+            if (_cancelRequested) yield break;
+            if (token.IsCancellationRequested) yield break;
+            yield return null;
+        }
     }
 
     private void ShowPage(int index)

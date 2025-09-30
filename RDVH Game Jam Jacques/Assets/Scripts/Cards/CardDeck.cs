@@ -1,6 +1,6 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
 
 public class CardDeck : MonoBehaviour
@@ -25,10 +25,11 @@ public class CardDeck : MonoBehaviour
         rerollInteractor.OnClick = this.OnClickReroll;
     }
 
-    private async void OnClickReroll()
+    private void OnClickReroll()
     {
         bellController.RingBell();
-        ReRoll();
+        // ReRoll est maintenant une coroutine : on la lance
+        StartCoroutine(ReRoll());
     }
 
     private void OnHoverEnd(Card card)
@@ -44,25 +45,25 @@ public class CardDeck : MonoBehaviour
         card.OnHoverStart();
     }
 
-    public async void ReRoll()
+    public IEnumerator ReRoll()
     {
         rerollInteractor.Interactable = false;
 
-        await DestroyHand();
+        yield return DestroyHand();
         CompleteHand();
 
         rerollInteractor.Interactable = true;
     }
 
-    public async Task DestroyHand()
+    public IEnumerator DestroyHand()
     {
-        Task[] tasks = new Task[cards.Count];
+        // lancer toutes les Depop en parallèle, puis attendre qu'elles finissent
+        var routines = new List<IEnumerator>(cards.Count);
         for (int i = 0; i < cards.Count; i++)
-        {
-            tasks[i] = cards[i].Depop();
-        }
+            routines.Add(cards[i].Depop());
 
-        await Task.WhenAll(tasks);
+        yield return WaitAll(routines);
+
         cards = new();
     }
 
@@ -73,13 +74,24 @@ public class CardDeck : MonoBehaviour
         {
             float unitOffset = i - (config.CARD_COUNT - 1) / 2f;
             Vector3 localPosition = Vector3.left * unitOffset * config.SPACING_BTW_CARDS;
+
             CardData pickedCardConfig = this.PickPrefab();
-            Card newCard = GameObject.Instantiate(config.CardPrefab, DeckZone.transform.position + localPosition, config.CARD_ORIENTATION, DeckZone);
+            Card newCard = GameObject.Instantiate(
+                config.CardPrefab,
+                DeckZone.transform.position + localPosition,
+                config.CARD_ORIENTATION,
+                DeckZone
+            );
+
             newCard.Interactor.OnClick = () => OnCardCliked(newCard);
             newCard.Interactor.OnHoverEnd = () => OnHoverEnd(newCard);
             newCard.Interactor.OnHoverStart = () => OnHoverStart(newCard);
+
             newCard.Set(pickedCardConfig);
-            _ = newCard.Pop();
+
+            // Pop en "fire-and-forget"
+            StartCoroutine(newCard.Pop());
+
             cards.Add(newCard);
         }
     }
@@ -99,5 +111,26 @@ public class CardDeck : MonoBehaviour
     public void Remove(Card card)
     {
         this.cards.Remove(card);
+    }
+
+    // -------- helper parallèle (équivalent Task.WhenAll pour coroutines) --------
+    private IEnumerator WaitAll(List<IEnumerator> routines)
+    {
+        if (routines == null || routines.Count == 0) yield break;
+
+        int remaining = routines.Count;
+
+        for (int i = 0; i < routines.Count; i++)
+            StartCoroutine(RunAndFlag(routines[i], () => remaining--));
+
+        // attendre que toutes soient terminées
+        while (remaining > 0)
+            yield return null;
+    }
+
+    private IEnumerator RunAndFlag(IEnumerator routine, Action onDone)
+    {
+        yield return StartCoroutine(routine);
+        onDone?.Invoke();
     }
 }

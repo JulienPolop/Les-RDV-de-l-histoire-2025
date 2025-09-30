@@ -1,6 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Threading; // pour CancellationToken
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private CanvasGroup bubbleGroup;     // Optionnel : pour un fade propre
     [SerializeField] private TextMeshProUGUI textUI;      // Le texte TMP
     [SerializeField] private Button nextButton;           // Bouton pour avancer / skip
-    [SerializeField] private AudioManager AudioManager;         // Pour jouer le son d'écriture
+    [SerializeField] private AudioManager AudioManager;   // Pour jouer le son d'écriture
 
     [Header("Typewriter")]
     [SerializeField] private float charsPerSecond = 40f;
@@ -21,10 +21,11 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private float punctuationExtraDelay = 0.25f;
 
     // État interne
-    private bool _typing;                      // vrai pendant la frappe
-    private bool _skipRequested;               // demande de skip via bouton
-    private TaskCompletionSource<bool> _advanceTcs; // completé quand on clique "suivant" pour avancer
-    private CancellationTokenSource _runCts;   // pour annuler proprement si on relance un dialogue
+    private bool _typing;               // vrai pendant la frappe
+    private bool _skipRequested;        // demande de skip via bouton
+    private bool _advanceRequested;     // clic "next" pour avancer
+    private bool _cancelRequested;      // annulation locale
+    private CancellationToken _externalToken;
 
     void Awake()
     {
@@ -34,67 +35,57 @@ public class DialogueController : MonoBehaviour
 
     void OnDisable()
     {
-        // si un dialogue tourne et que l'objet est désactivé -> annuler
-        _runCts?.Cancel();
+        // annule en cas de désactivation du GO
+        _cancelRequested = true;
     }
 
     /// <summary>
-    /// Lance un dialogue et ne rend la main qu’une fois terminé.
+    /// Lance un dialogue et ne rend la main qu’une fois terminé (coroutine).
     /// </summary>
-    public async Task RunAsync(IList<string> lines, CancellationToken externalToken = default)
+    public IEnumerator RunDialog(IList<string> lines, CancellationToken externalToken = default)
     {
-        if (lines == null || lines.Count == 0) return;
+        if (lines == null || lines.Count == 0) yield break;
 
-        _runCts?.Cancel();
-        _runCts = CancellationTokenSource.CreateLinkedTokenSource(externalToken);
-        var token = _runCts.Token;
+        // reset et setup
+        _cancelRequested = false;
+        _externalToken = externalToken;
 
         nextButton.onClick.AddListener(OnNextClicked);
-
-        try
-        {
+        if (AudioManager != null && AudioManager.writeSource != null)
             AudioManager.writeSource.Play();
-            await ShowBubbleAsync(true, token);
 
-            for (int i = 0; i < lines.Count; i++)
-            {
-                token.ThrowIfCancellationRequested();
+        // montrer la bulle
+        yield return ShowBubble(true, externalToken);
+        if (IsCancelled()) goto Cleanup;
 
-                // 1) Frappe lettre par lettre (clic = skip)
-                await TypeLineAsync(lines[i], token);
-
-                // 2) Attendre un clic "Next" pour continuer
-                //    (même sur la DERNIÈRE ligne)
-                await WaitAdvanceClickAsync(token);
-            }
-
-            // Après le dernier clic, on peut cacher la bulle
-            await ShowBubbleAsync(false, token);
-        }
-        finally
+        // chaque ligne : typewriter puis attendre clic "next"
+        for (int i = 0; i < lines.Count; i++)
         {
+            if (IsCancelled()) break;
+
+            yield return TypeLine(lines[i], externalToken);
+            if (IsCancelled()) break;
+
+            yield return WaitAdvanceClick(externalToken);
+        }
+
+        if (!IsCancelled())
+            yield return ShowBubble(false, externalToken);
+
+        Cleanup:
+        if (AudioManager != null && AudioManager.writeSource != null)
             AudioManager.writeSource.Stop();
-            nextButton.onClick.RemoveListener(OnNextClicked);
-            _advanceTcs = null;
-            _typing = false;
-            _skipRequested = false;
-            if (textUI) textUI.text = string.Empty;
-        }
+
+        nextButton.onClick.RemoveListener(OnNextClicked);
+        _typing = false;
+        _skipRequested = false;
+        _advanceRequested = false;
+
+        if (textUI) textUI.text = string.Empty;
     }
 
-    private Task WaitAdvanceClickAsync(CancellationToken token)
-    {
-        _advanceTcs = new TaskCompletionSource<bool>();
-        // Relie l’annulation à la TCS
-        var reg = token.Register(() => _advanceTcs.TrySetCanceled());
-
-        // Important : on détache l’enregistrement quand la Task se termine
-        return _advanceTcs.Task.ContinueWith(t =>
-        {
-            reg.Dispose();
-            return t; // on propage le même Task (status/exception)
-        }, TaskScheduler.Current).Unwrap();
-    }
+    private bool IsCancelled()
+        => _cancelRequested || (_externalToken.CanBeCanceled && _externalToken.IsCancellationRequested);
 
     // ====== Implémentation ======
 
@@ -108,13 +99,24 @@ public class DialogueController : MonoBehaviour
         else
         {
             // Ligne finie -> on avance
-            _advanceTcs?.TrySetResult(true);
+            _advanceRequested = true;
         }
     }
 
-    private async Task TypeLineAsync(string line, CancellationToken token)
+    public IEnumerator WaitAdvanceClick(CancellationToken token)
     {
-        if (!textUI) return;
+        _advanceRequested = false;
+        while (!_advanceRequested)
+        {
+            if (token.IsCancellationRequested) yield break;
+            if (_cancelRequested) yield break;
+            yield return null;
+        }
+    }
+
+    public IEnumerator TypeLine(string line, CancellationToken token)
+    {
+        if (!textUI) yield break;
 
         _typing = true;
         _skipRequested = false;
@@ -131,7 +133,7 @@ public class DialogueController : MonoBehaviour
 
         while (visible < total && !_skipRequested)
         {
-            token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested || _cancelRequested) { _typing = false; yield break; }
 
             float dt = useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
             timer += dt;
@@ -146,13 +148,14 @@ public class DialogueController : MonoBehaviour
                 // Petite pause sur la ponctuation (optionnel)
                 if (visible > 0)
                 {
-                    char c = textUI.textInfo.characterInfo[visible - 1].character;
+                    var ci = textUI.textInfo.characterInfo[visible - 1];
+                    char c = ci.character;
                     if (punctuation.IndexOf(c) >= 0)
-                        await WaitSecondsAsync(punctuationExtraDelay, token);
+                        yield return WaitSeconds(punctuationExtraDelay, token);
                 }
             }
 
-            await Task.Yield();
+            yield return null; // prochaine frame
         }
 
         // Si on a demandé "skip", révéler tout d'un coup
@@ -161,18 +164,18 @@ public class DialogueController : MonoBehaviour
         _typing = false;
     }
 
-    private async Task ShowBubbleAsync(bool show, CancellationToken token)
+    public IEnumerator ShowBubble(bool show, CancellationToken token)
     {
-        if (!bubbleRoot && !bubbleGroup)
+        // Fallback simple si rien pour le fade
+        if (bubbleRoot == null && bubbleGroup == null)
         {
-            // fallback simple
-            if (bubbleRoot) bubbleRoot.SetActive(show);
-            return;
+            if (bubbleRoot != null) bubbleRoot.SetActive(show);
+            yield break;
         }
 
         if (show)
         {
-            if (bubbleRoot) bubbleRoot.SetActive(true);
+            if (bubbleRoot != null) bubbleRoot.SetActive(true);
         }
 
         float duration = 0.15f;
@@ -182,25 +185,26 @@ public class DialogueController : MonoBehaviour
         float t = 0f;
         while (t < duration)
         {
-            token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested || _cancelRequested) yield break;
+
             t += useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
             float k = Mathf.Clamp01(t / duration);
             if (bubbleGroup) bubbleGroup.alpha = Mathf.Lerp(start, end, k);
-            await Task.Yield();
+            yield return null;
         }
 
         if (bubbleGroup) bubbleGroup.alpha = end;
-        if (!show && bubbleRoot) bubbleRoot.SetActive(false);
+        if (!show && bubbleRoot != null) bubbleRoot.SetActive(false);
     }
 
-    private async Task WaitSecondsAsync(float seconds, CancellationToken token)
+    public IEnumerator WaitSeconds(float seconds, CancellationToken token)
     {
         float t = 0f;
         while (t < seconds)
         {
-            token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested || _cancelRequested) yield break;
             t += useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
-            await Task.Yield();
+            yield return null;
         }
     }
 }

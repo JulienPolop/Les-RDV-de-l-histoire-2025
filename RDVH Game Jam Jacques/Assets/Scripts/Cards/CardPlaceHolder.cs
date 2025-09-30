@@ -1,17 +1,20 @@
-using System;
-using System.Threading.Tasks;
-using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CardPlaceHolder : MonoBehaviour
 {
     [SerializeField] private CardPlaceHolderConfig config;
+
     public Card Card => card;
     public CardFlag Flag => flag;
     public bool IsEmpty => card == null;
+
     private CardFlag flag;
     private Card card;
+
+    public Image image;
+
     public void Set(CardFlag flag)
     {
         this.flag = flag;
@@ -25,47 +28,61 @@ public class CardPlaceHolder : MonoBehaviour
         this.card.Interactor.Interactable = false;
     }
 
-    public async Task Aspire()
+    // Était: async Task Aspire()
+    public IEnumerator Aspire()
     {
-        Vector3 initialPosition = this.card.transform.position;
-        Vector3 finalPosition = this.transform.position;
+        if (card == null) yield break;
 
-        this.card.Validate();
+        Vector3 initialPosition = card.transform.position;
+        Vector3 finalPosition = transform.position;
 
-        await Task.Delay(TimeSpan.FromSeconds(config.ASPIRE_DELAY));
-        float initialTime = Time.time;
-        float animationRatio = 0f;
-        while (animationRatio < 1f)
+        card.Validate();
+
+        // délai avant l’aspiration
+        if (config.ASPIRE_DELAY > 0f)
+            yield return new WaitForSeconds(config.ASPIRE_DELAY);
+
+        // animation d’aspiration selon la courbe
+        float dur = Mathf.Max(0.0001f, config.ASPIRE_DURATION);
+        float t = 0f;
+        while (t < dur)
         {
-            Vector3 currentposition = Vector3.Lerp(initialPosition, finalPosition, config.aspireCurve.Evaluate(animationRatio));
-            this.card.transform.position = currentposition;
-            await Task.Delay(10);
-            animationRatio = (Time.time - initialTime) / config.ASPIRE_DURATION;
+            float k = Mathf.Clamp01(t / dur);
+            float eased = config.aspireCurve != null ? config.aspireCurve.Evaluate(k) : k;
+            card.transform.position = Vector3.Lerp(initialPosition, finalPosition, eased);
+
+            t += Time.deltaTime;
+            yield return null;
         }
 
-        this.card.transform.position = finalPosition;
-        this.image.enabled = false;
-        this.card.Placed();
-        await Task.Delay(TimeSpan.FromSeconds(config.ASPIRE_ENDPAUSE));
+        card.transform.position = finalPosition;
+        image.enabled = false;
+        card.Placed();
+
+        if (config.ASPIRE_ENDPAUSE > 0f)
+            yield return new WaitForSeconds(config.ASPIRE_ENDPAUSE);
     }
 
     public void Pop()
     {
-        Color color = this.image.color;
+        Color color = image.color;
         color.a = 0f;
-        this.image.color = color;
-        //TODO Animate
-        Color colorEnd = this.image.color;
-        colorEnd.a = 1f;
-        this.image.color = colorEnd;
+        image.color = color;
+
+        // TODO: animer si besoin; pour l'instant on “snap” à 1
+        color.a = 1f;
+        image.color = color;
     }
 
-    public async Task Attack()
+    // Était: async Task Attack()
+    public IEnumerator Attack()
     {
-        if(!IsEmpty) await Card.Attack();
-        await Task.Delay(TimeSpan.FromSeconds(config.DESTROY_DELAY));
-        GameObject.Destroy(this.gameObject);
-    }
+        if (!IsEmpty)
+            yield return card.Attack(); // card.Attack() est déjà une coroutine
 
-    public Image image;
+        if (config.DESTROY_DELAY > 0f)
+            yield return new WaitForSeconds(config.DESTROY_DELAY);
+
+        Destroy(gameObject);
+    }
 }

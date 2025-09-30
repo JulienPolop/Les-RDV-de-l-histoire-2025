@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+// using System.Threading.Tasks; // plus nécessaire
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,13 +23,11 @@ public partial class Main : MonoBehaviour
 
     public void Restart()
     {
-        // Get the currently active scene and reload it
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
     {
-        // Load the first scene of the game
         SceneManager.LoadScene(0);
     }
 
@@ -42,79 +41,19 @@ public partial class Main : MonoBehaviour
         cardDeck.CompleteHand();
 
         // Testing
-        FirstStep();
+        FirstStep(); // garde le même nom: lance la routine
     }
 
-    public async void FirstStep()
+    // ---- mêmes NOMS publics, désormais wrappers vers des coroutines ----
+
+    public void FirstStep()
     {
-        Debug.Log("Init First Step");
-        detector.SetActive(false);
-        cardDeck.gameObject.SetActive(false);
-        attackDeck.gameObject.SetActive(false);
-
-        contextStep = 0;
-        if (contextStep < contexts.Count) // Get next level context
-        {
-            currentLevelContext = contexts[contextStep];
-            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
-        }
-        else // End Game
-        {
-            Debug.Log("End Game");
-            currentLevelContext = null;
-            return;
-        }
-
-        await director.Init(currentLevelContext.levelEnvironment);
-
-        tutoManager.gameObject.SetActive(true);
-        await tutoManager.StartTuto();
-
-        cardDeck.gameObject.SetActive(true);
-        attackDeck.gameObject.SetActive(true);
-        detector.SetActive(true);
+        StartCoroutine(FirstStepRoutine());
     }
 
-    public async void NextStep()
+    public void NextStep()
     {
-        Debug.Log("Next Step");
-        detector.SetActive(false);
-        cardDeck.gameObject.SetActive(false);
-        attackDeck.gameObject.SetActive(false);
-
-        await director.EndStep();
-
-        if (currentLevelContext != null)
-        {
-            //Play destruction Animation
-            currentLevelContext.levelEnvironment.Validate();
-        }
-
-        await Task.Delay(TimeSpan.FromSeconds(currentLevelContext.levelEnvironment.GetValidateTime()));
-
-
-        contextStep++;
-        if (contextStep < contexts.Count) // Get next level context
-        {
-            currentLevelContext = contexts[contextStep];
-            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
-        }
-        else // End Game
-        {
-            Debug.Log("End Game, GG!");
-            currentLevelContext = null;
-            await director.GoToOutro(outroContext.levelEnvironment);
-            return;
-        }
-
-        Debug.Log("Go to " + contextStep);
-        await director.GoTo(currentLevelContext.levelEnvironment);
-
-        detector.SetActive(true);
-        cardDeck.gameObject.SetActive(true);
-        attackDeck.gameObject.SetActive(true);
-
-        cardDeck.ReRoll();
+        StartCoroutine(NextStepRoutine());
     }
 
     public void OnCardSelected(Card card)
@@ -131,10 +70,104 @@ public partial class Main : MonoBehaviour
         }
     }
 
-    public async void OnDeckFull()
+    public void OnDeckFull()
     {
-        await attackDeck.Attack();
-        await Task.Delay(TimeSpan.FromSeconds(0.5f));
-        NextStep();
+        StartCoroutine(OnDeckFullRoutine());
+    }
+
+    // -------------------- Coroutines internes --------------------
+
+    private IEnumerator FirstStepRoutine()
+    {
+        Debug.Log("Init First Step");
+        detector.SetActive(false);
+        cardDeck.gameObject.SetActive(false);
+        attackDeck.gameObject.SetActive(false);
+
+        contextStep = 0;
+        if (contextStep < contexts.Count)
+        {
+            currentLevelContext = contexts[contextStep];
+            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
+        }
+        else
+        {
+            Debug.Log("End Game");
+            currentLevelContext = null;
+            yield break;
+        }
+
+        Debug.Log("Just Before Director.Init");
+        // director.Init est déjà une coroutine (même nom)
+        yield return director.Init(currentLevelContext.levelEnvironment);
+
+
+        cardDeck.gameObject.SetActive(true);
+        attackDeck.gameObject.SetActive(true);
+
+        yield return cardDeck.ReRoll();
+
+        yield return new WaitForSeconds(2);
+
+        // Tuto (même nom StartTuto, version coroutine)
+        tutoManager.gameObject.SetActive(true);
+        yield return tutoManager.StartTuto();
+
+        detector.SetActive(true);
+    }
+
+    private IEnumerator NextStepRoutine()
+    {
+        Debug.Log("Next Step");
+        detector.SetActive(false);
+        cardDeck.gameObject.SetActive(false);
+        attackDeck.gameObject.SetActive(false);
+
+        yield return director.EndStep();
+
+        if (currentLevelContext != null)
+        {
+            // Play destruction Animation
+            currentLevelContext.levelEnvironment.Validate();
+        }
+
+        // Attente de la durée de validation
+        float wait = Mathf.Max(0f, (float)currentLevelContext.levelEnvironment.GetValidateTime());
+        yield return new WaitForSeconds(wait);
+
+        contextStep++;
+        if (contextStep < contexts.Count)
+        {
+            currentLevelContext = contexts[contextStep];
+            this.attackDeck.SetGoals(currentLevelContext.config.Goal);
+        }
+        else
+        {
+            Debug.Log("End Game, GG!");
+            currentLevelContext = null;
+            yield return director.GoToOutro(outroContext.levelEnvironment);
+            yield break;
+        }
+
+        Debug.Log("Go to " + contextStep);
+        yield return director.GoTo(currentLevelContext.levelEnvironment);
+
+        detector.SetActive(true);
+        cardDeck.gameObject.SetActive(true);
+        attackDeck.gameObject.SetActive(true);
+
+        yield return cardDeck.ReRoll();
+    }
+
+    private IEnumerator OnDeckFullRoutine()
+    {
+        // attackDeck.Attack est supposée coroutine désormais
+        yield return attackDeck.Attack();
+
+        // Remplace Task.Delay(0.5s)
+        yield return new WaitForSeconds(0.5f);
+
+        // Enchaîne sur la suite
+        NextStep(); // wrapper public -> lance la coroutine
     }
 }
