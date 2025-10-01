@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading; // pour CancellationToken
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,14 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private bool useUnscaledTime = false;
     [SerializeField] private string punctuation = ".,;:!?…";
     [SerializeField] private float punctuationExtraDelay = 0.25f;
+
+    [Header("Animation")]
+    [SerializeField] private Animator bubbleAnimator;
+    [SerializeField] private string stateEnter = "Enter";
+    [SerializeField] private string stateIdle = "Idle";
+    [SerializeField] private string stateExit = "Exit";
+    [SerializeField] private string triggerShow = "Enter";
+    [SerializeField] private string triggerHide = "Exit";
 
     // État interne
     private bool _typing;               // vrai pendant la frappe
@@ -175,7 +184,8 @@ public class DialogueController : MonoBehaviour
 
         if (show)
         {
-            if (bubbleRoot != null) bubbleRoot.SetActive(true);
+            if (bubbleRoot != null) yield return PlayEnter(token);
+
         }
 
         float duration = 0.15f;
@@ -194,7 +204,8 @@ public class DialogueController : MonoBehaviour
         }
 
         if (bubbleGroup) bubbleGroup.alpha = end;
-        if (!show && bubbleRoot != null) bubbleRoot.SetActive(false);
+        if (!show && bubbleRoot != null) yield return PlayExit(token);
+
     }
 
     public IEnumerator WaitSeconds(float seconds, CancellationToken token)
@@ -206,5 +217,37 @@ public class DialogueController : MonoBehaviour
             t += useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
             yield return null;
         }
+    }
+
+    private IEnumerator PlayEnter(CancellationToken token)
+    {
+        if (bubbleRoot && !bubbleRoot.activeSelf) bubbleRoot.SetActive(true);
+        if (bubbleGroup) { bubbleGroup.interactable = false; bubbleGroup.blocksRaycasts = false; }
+
+        bubbleAnimator.ResetTrigger(triggerHide);
+        bubbleAnimator.SetTrigger(triggerShow);
+
+        // Attendre qu’on entre dans Enter puis sa fin, puis qu’on arrive en Idle
+        yield return AnimationHelper.WaitForState(bubbleAnimator, 0, stateEnter, token);
+        yield return AnimationHelper.WaitForStateEnd(bubbleAnimator, 0, stateEnter, token);
+        yield return AnimationHelper.WaitForState(bubbleAnimator, 0, stateIdle, token);
+
+        if (bubbleGroup) { bubbleGroup.interactable = true; bubbleGroup.blocksRaycasts = true; }
+    }
+
+    private IEnumerator PlayExit(CancellationToken token)
+    {
+        if (bubbleGroup) { bubbleGroup.interactable = false; bubbleGroup.blocksRaycasts = false; }
+
+        bubbleAnimator.ResetTrigger(triggerShow);
+        bubbleAnimator.SetTrigger(triggerHide);
+
+        // Attendre qu’on entre dans Exit puis sa fin (Exit -> Hidden auto dans le controller)
+        yield return AnimationHelper.WaitForState(bubbleAnimator, 0, stateExit, token);
+        yield return AnimationHelper.WaitForStateEnd(bubbleAnimator, 0, stateExit, token);
+
+        if (bubbleRoot) bubbleRoot.SetActive(false);
+
+        Debug.Log("Dialog Exit");
     }
 }
