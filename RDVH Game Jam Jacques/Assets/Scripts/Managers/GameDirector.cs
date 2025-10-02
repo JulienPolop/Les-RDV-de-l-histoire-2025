@@ -6,20 +6,39 @@ public class GameDirector : MonoBehaviour
     public Camera MainCamera;
     public GameDirectorConfig config;
     public VaubanController VaubanController;
+    public AudioManager AudioManager;
     [SerializeField] DialogueController DialogController;
 
-    [SerializeField]
-    private GameObject UIFin;
-
+    [SerializeField] private GameObject UIFin;
+    [SerializeField] private GameObject UIMainMenu;
+    [SerializeField] private Transform MainMenuCameraPosition; 
     private Coroutine currentShake;
 
     // --- Garde les mêmes noms publics ---
 
+    public IEnumerator ShowMainMenu()
+    {
+        //Petite animation d'entrée (bouger la caméra légèrement) + fade in
+
+        //Son, seulement la musique
+        if (AudioManager.musicSource != null)
+            AudioManager.musicSource.Play();
+
+        yield return MoveCamera(MainMenuCameraPosition.position);
+
+
+        UIMainMenu.SetActive(true);
+    }
+
     public IEnumerator Init(LevelEnvironment levelEnvironment)
     {
+        UIMainMenu.SetActive(false);
+
         // ICI, faire l'intro
         Debug.Log("Init");
-        MainCamera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
+        Vector3 newRotationTarget = new Vector3(35, MainCamera.transform.rotation.y, MainCamera.transform.rotation.z);
+        yield return MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset, newRotationTarget);
+        //MainCamera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
         Debug.Log("Just Before Wait 2 seconds"); 
         yield return new WaitForSeconds(2f);
         Debug.Log("After 2s wait, Move Vauban");
@@ -29,6 +48,9 @@ public class GameDirector : MonoBehaviour
         // Dialogue de Vauban (même nom RunAsync, appelé en coroutine)
         if (DialogController != null)
             yield return DialogController.RunDialog(levelEnvironment.VaubanDialog);
+
+        if (AudioManager.battleSource != null)
+            AudioManager.battleSource.Play();
     }
 
     public IEnumerator EndStep()
@@ -54,24 +76,37 @@ public class GameDirector : MonoBehaviour
     // Garde le comportement d’origine: caméra lancée "en fond", on attend seulement Vauban
     public IEnumerator GoToOutro(LevelEnvironment levelEnvironment)
     {
-        StartCoroutine(MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset));
-        yield return MoveVauban(levelEnvironment.VaubanPosition.position);
+        yield return WaitAll(
+            MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset),
+            MoveVaubanAndAnimate(levelEnvironment.VaubanPosition.position)
+        );
 
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(3.5f);
+        Vector3 vector3 = new Vector3(54f, 0, 0);
+        yield return MoveCamera(MainMenuCameraPosition.position, vector3);
 
         UIFin.SetActive(true);
     }
 
+    private IEnumerator MoveVaubanAndAnimate(Vector3 targetPos)
+    {
+        yield return MoveVauban(targetPos); // attend la fin
+        VaubanController.SetAnimation(VaubanController.AnimState.HAPPY); // déclenche dès que Vauban a fini
+    }
+
     // --- Mouvements ---
 
-    private IEnumerator MoveCamera(Vector3 target)
+    private IEnumerator MoveCamera(Vector3 target, Vector3? rotationTarget = null)
     {
         Vector3 velocity = Vector3.zero;
+        Vector3 angularVelocity = Vector3.zero;
 
-        while ((MainCamera.transform.position - target).sqrMagnitude > 0.01f * 0.01f)
+        while ((MainCamera.transform.position - target).sqrMagnitude > 0.01f * 0.01f
+            || (rotationTarget.HasValue && Quaternion.Angle(MainCamera.transform.rotation, Quaternion.Euler(rotationTarget.Value)) > 0.1f))
         {
+            // Déplacement lissé
             MainCamera.transform.position = Vector3.SmoothDamp(
                 MainCamera.transform.position,
                 target,
@@ -80,10 +115,29 @@ public class GameDirector : MonoBehaviour
                 Mathf.Infinity,
                 Time.deltaTime
             );
-            yield return null; // prochaine frame
+
+            // Rotation lissée si rotation cible définie
+            if (rotationTarget.HasValue)
+            {
+                MainCamera.transform.rotation = Quaternion.Euler(
+                    Vector3.SmoothDamp(
+                        MainCamera.transform.rotation.eulerAngles,
+                        rotationTarget.Value,
+                        ref angularVelocity,
+                        1f,
+                        Mathf.Infinity,
+                        Time.deltaTime
+                    )
+                );
+            }
+
+            yield return null;
         }
 
-        MainCamera.transform.position = target; // snap final
+        // Snap final
+        MainCamera.transform.position = target;
+        if (rotationTarget.HasValue)
+            MainCamera.transform.rotation = Quaternion.Euler(rotationTarget.Value);
     }
 
     private IEnumerator MoveVauban(Vector3 target)

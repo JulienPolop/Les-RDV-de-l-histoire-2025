@@ -41,10 +41,18 @@ public partial class Main : MonoBehaviour
         cardDeck.CompleteHand();
 
         // Testing
-        FirstStep(); // garde le même nom: lance la routine
+        MainMenu();
+        //FirstStep(); // garde le même nom: lance la routine
     }
 
     // ---- mêmes NOMS publics, désormais wrappers vers des coroutines ----
+    public void MainMenu()
+    {
+        {
+            StartCoroutine(MainMenuRoutine());
+        }
+    }
+
 
     public void FirstStep()
     {
@@ -76,6 +84,17 @@ public partial class Main : MonoBehaviour
     }
 
     // -------------------- Coroutines internes --------------------
+    private IEnumerator MainMenuRoutine()
+    {
+        detector.SetActive(false);
+        cardDeck.gameObject.SetActive(false);
+        attackDeck.gameObject.SetActive(false);
+
+        Debug.Log("MainMenuRoutine");
+        yield return director.ShowMainMenu();
+    }
+
+
 
     private IEnumerator FirstStepRoutine()
     {
