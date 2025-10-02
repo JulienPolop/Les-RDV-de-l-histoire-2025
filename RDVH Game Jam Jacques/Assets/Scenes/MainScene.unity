@@ -20674,7 +20674,7 @@ MonoBehaviour:
     mes plans, je suis venu pour vous en faciliter la prise."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
-  m_sharedMaterial: {fileID: -3685529672573761695, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+  m_sharedMaterial: {fileID: -2166407460115883387, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41757,9 +41757,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1246821290}
     m_Modifications:
+    - target: {fileID: 3005052788540464066, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+    - target: {fileID: 3005052788540464066, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4955145130460153074, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
       propertyPath: m_Name
       value: --Deck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044318431090900742, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c49625de22c726848bd4486bb76d6af5, type: 2}
+    - target: {fileID: 8044318431090900742, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8716163436744875609, guid: f9c58989c30892743b3d1c983ba3de8b, type: 3}
       propertyPath: m_LocalPosition.x
