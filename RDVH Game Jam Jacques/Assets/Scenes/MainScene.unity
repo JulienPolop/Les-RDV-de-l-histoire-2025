@@ -19751,6 +19751,8 @@ MonoBehaviour:
   UIFin: {fileID: 1734769675}
   UIMainMenu: {fileID: 2089950507}
   MainMenuCameraPosition: {fileID: 1236634721}
+  MainMenuCameraRotation: {x: 54, y: 0, z: 0}
+  GameCameraRotation: {x: 31, y: 0, z: 0}
 --- !u!114 &1138984411
 MonoBehaviour:
   m_ObjectHideFlags: 0

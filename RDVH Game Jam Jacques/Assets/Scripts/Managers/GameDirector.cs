@@ -11,8 +11,14 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField] private GameObject UIFin;
     [SerializeField] private GameObject UIMainMenu;
-    [SerializeField] private Transform MainMenuCameraPosition; 
+
     private Coroutine currentShake;
+
+    [Header("Camera")]
+    [SerializeField] private Transform MainMenuCameraPosition;
+    [SerializeField] private Vector3 MainMenuCameraRotation;
+
+    [SerializeField] private Vector3 GameCameraRotation;
 
     // --- Garde les mêmes noms publics ---
 
@@ -24,7 +30,7 @@ public class GameDirector : MonoBehaviour
         if (AudioManager.musicSource != null)
             AudioManager.musicSource.Play();
 
-        yield return MoveCamera(MainMenuCameraPosition.position);
+        yield return MoveCamera(MainMenuCameraPosition.position, MainMenuCameraRotation);
 
 
         UIMainMenu.SetActive(true);
@@ -36,8 +42,7 @@ public class GameDirector : MonoBehaviour
 
         // ICI, faire l'intro
         Debug.Log("Init");
-        Vector3 newRotationTarget = new Vector3(35, MainCamera.transform.rotation.y, MainCamera.transform.rotation.z);
-        yield return MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset, newRotationTarget);
+        yield return MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset, GameCameraRotation);
         //MainCamera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
         Debug.Log("Just Before Wait 2 seconds"); 
         yield return new WaitForSeconds(2f);
