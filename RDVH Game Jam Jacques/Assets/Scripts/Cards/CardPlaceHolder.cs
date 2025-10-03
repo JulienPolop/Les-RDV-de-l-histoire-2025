@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,6 +83,14 @@ public class CardPlaceHolder : MonoBehaviour
 
         if (config.DESTROY_DELAY > 0f)
             yield return new WaitForSeconds(config.DESTROY_DELAY);
+
+    }
+
+    internal IEnumerator Depop()
+    {
+        if (!IsEmpty)
+            yield return card.Depop(); // card.Attack() est déjà une coroutine
+
 
         Destroy(gameObject);
     }

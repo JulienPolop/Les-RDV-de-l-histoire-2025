@@ -82,13 +82,15 @@ public class Card : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        yield return new WaitForSeconds(Random.Range(0f, config.ATTACK_RANDOM_DELAY));
+        //yield return new WaitForSeconds(Random.Range(0f, config.ATTACK_RANDOM_DELAY));
 
         this.animator.SetTrigger("attack");
 
-        yield return new WaitForSeconds(config.ATTACK_SOUND_DELAY);
+        yield return null;
 
-        AudioManager.Play("canon");
+        //yield return new WaitForSeconds(config.ATTACK_SOUND_DELAY);
+
+        //AudioManager.Play("canon");
     }
 
     public void Placed()

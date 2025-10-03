@@ -62,7 +62,7 @@ public class CardDeck : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
             routines.Add(cards[i].Depop());
 
-        yield return WaitAll(routines);
+        yield return CoroutineHelper.WaitAll(this, routines);
 
         cards = new();
     }
@@ -111,26 +111,5 @@ public class CardDeck : MonoBehaviour
     public void Remove(Card card)
     {
         this.cards.Remove(card);
-    }
-
-    // -------- helper parallèle (équivalent Task.WhenAll pour coroutines) --------
-    private IEnumerator WaitAll(List<IEnumerator> routines)
-    {
-        if (routines == null || routines.Count == 0) yield break;
-
-        int remaining = routines.Count;
-
-        for (int i = 0; i < routines.Count; i++)
-            StartCoroutine(RunAndFlag(routines[i], () => remaining--));
-
-        // attendre que toutes soient terminées
-        while (remaining > 0)
-            yield return null;
-    }
-
-    private IEnumerator RunAndFlag(IEnumerator routine, Action onDone)
-    {
-        yield return StartCoroutine(routine);
-        onDone?.Invoke();
     }
 }

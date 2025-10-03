@@ -58,9 +58,14 @@ public class GameDirector : MonoBehaviour
             AudioManager.battleSource.Play();
     }
 
-    public IEnumerator EndStep()
+    public IEnumerator OnAttack()
     {
+
+        yield return new WaitForSeconds(0.3f);
+
+        AudioManager.Play("canon",3);
         CameraShake(0.2f, 0.1f);
+
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
         yield return new WaitForSeconds(1f);
         VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
@@ -69,9 +74,10 @@ public class GameDirector : MonoBehaviour
     public IEnumerator GoTo(LevelEnvironment levelEnvironment)
     {
         // Lancer caméra + vauban en parallèle, puis attendre la fin des 2
-        yield return WaitAll(
-            MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset),
-            MoveVauban(levelEnvironment.VaubanPosition.position)
+        yield return CoroutineHelper.WaitAll(this, new System.Collections.Generic.List<IEnumerator> {
+                MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset),
+                MoveVauban(levelEnvironment.VaubanPosition.position) 
+            }
         );
 
         if (DialogController != null)
@@ -81,9 +87,10 @@ public class GameDirector : MonoBehaviour
     // Garde le comportement d’origine: caméra lancée "en fond", on attend seulement Vauban
     public IEnumerator GoToOutro(LevelEnvironment levelEnvironment)
     {
-        yield return WaitAll(
-            MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset),
-            MoveVaubanAndAnimate(levelEnvironment.VaubanPosition.position)
+        yield return CoroutineHelper.WaitAll(this,new System.Collections.Generic.List<IEnumerator> {
+                MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset),
+                MoveVaubanAndAnimate(levelEnvironment.VaubanPosition.position)
+            }
         );
 
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
@@ -229,21 +236,5 @@ public class GameDirector : MonoBehaviour
 
         MainCamera.transform.localPosition = originalPos;
         currentShake = null;
-    }
-
-    // --- Helper: attendre 2 coroutines lancées en parallèle ---
-
-    private IEnumerator WaitAll(IEnumerator a, IEnumerator b)
-    {
-        bool aDone = false, bDone = false;
-        StartCoroutine(RunAndFlag(a, () => aDone = true));
-        StartCoroutine(RunAndFlag(b, () => bDone = true));
-        yield return new WaitUntil(() => aDone && bDone);
-    }
-
-    private IEnumerator RunAndFlag(IEnumerator routine, System.Action onDone)
-    {
-        yield return StartCoroutine(routine);
-        onDone?.Invoke();
     }
 }

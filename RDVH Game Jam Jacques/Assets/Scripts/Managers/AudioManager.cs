@@ -30,9 +30,9 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public static void Play(string id) => instance._Play(id);
+    public static void Play(string id, float volume = 1f) => instance._Play(id, volume);
 
-    public void _Play(string id)
+    public void _Play(string id, float volume)
     {
         AudioEvent evt = audioDB[id];
 
@@ -56,6 +56,6 @@ public class AudioManager : MonoBehaviour
 
         lastStateSave[id] = pickedIndex;
         AudioClip clip = evt.clips[pickedIndex];
-        vfxSource.PlayOneShot(clip);
+        vfxSource.PlayOneShot(clip, volume);
     }
 }

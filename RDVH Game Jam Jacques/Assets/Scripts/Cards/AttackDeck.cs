@@ -40,6 +40,22 @@ public class AttackDeck : MonoBehaviour
         // Attendre que toutes soient terminées
         yield return WaitAll(routines);
 
+
+    }
+
+    public IEnumerator DepopCards()
+    {
+        // Lancer toutes les attaques en parallèle sur chaque placeholder
+        var routines = new List<IEnumerator>(cardHolders.Count);
+        for (int i = 0; i < cardHolders.Count; i++)
+        {
+            // Suppose que CardPlaceHolder.Attack() est aussi une coroutine désormais
+            routines.Add(cardHolders[i].Depop());
+        }
+
+        // Attendre que toutes soient terminées
+        yield return WaitAll(routines);
+
         // Vider la main
         cardHolders = new();
     }

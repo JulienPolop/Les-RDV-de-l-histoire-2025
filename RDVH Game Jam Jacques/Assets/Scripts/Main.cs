@@ -4,6 +4,7 @@ using System.Collections.Generic;
 // using System.Threading.Tasks; // plus nécessaire
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.STP;
 
 public partial class Main : MonoBehaviour
 {
@@ -139,19 +140,20 @@ public partial class Main : MonoBehaviour
     {
         Debug.Log("Next Step");
         detector.SetActive(false);
+
         cardDeck.gameObject.SetActive(false);
         attackDeck.gameObject.SetActive(false);
 
-        yield return director.EndStep();
-
+        float wait = Mathf.Max(0f, (float)currentLevelContext.levelEnvironment.GetValidateTime());
         if (currentLevelContext != null)
         {
             // Play destruction Animation
             currentLevelContext.levelEnvironment.Validate();
+            director.CameraShake(wait, 0.025f);
         }
 
         // Attente de la durée de validation
-        float wait = Mathf.Max(0f, (float)currentLevelContext.levelEnvironment.GetValidateTime());
+
         yield return new WaitForSeconds(wait);
 
         contextStep++;
@@ -175,13 +177,22 @@ public partial class Main : MonoBehaviour
         cardDeck.gameObject.SetActive(true);
         attackDeck.gameObject.SetActive(true);
 
-        yield return cardDeck.ReRoll();
+        cardDeck.CompleteHand();
     }
 
     private IEnumerator OnDeckFullRoutine()
     {
-        // attackDeck.Attack est supposée coroutine désormais
-        yield return attackDeck.Attack();
+        // Lance les d'atack
+        yield return CoroutineHelper.WaitAll(this, new System.Collections.Generic.List<IEnumerator> {
+                attackDeck.Attack(),
+                director.OnAttack()
+            });
+
+        // Lance les animations de depop des cartes
+        yield return CoroutineHelper.WaitAll(this, new System.Collections.Generic.List<IEnumerator> {
+                attackDeck.DepopCards(),
+                cardDeck.DestroyHand()
+            });
 
         // Remplace Task.Delay(0.5s)
         yield return new WaitForSeconds(0.5f);
