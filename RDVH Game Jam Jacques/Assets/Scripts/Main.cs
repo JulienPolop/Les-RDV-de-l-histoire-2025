@@ -24,12 +24,14 @@ public partial class Main : MonoBehaviour
 
     public void Restart()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(0);
+        StartCoroutine(fadeController.FadeOutAndLoad(SceneManager.GetActiveScene().name));
+        //SceneManager.LoadScene(0);
     }
 
     public void Start()

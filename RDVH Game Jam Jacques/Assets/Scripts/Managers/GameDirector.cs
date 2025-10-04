@@ -20,6 +20,9 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField] private Vector3 GameCameraRotation;
 
+    [Header("Ending Ref")]
+    [SerializeField] private GameObject VFXVictoire;
+
     // --- Garde les mêmes noms publics ---
 
     public IEnumerator ShowMainMenu()
@@ -94,6 +97,7 @@ public class GameDirector : MonoBehaviour
         );
 
         VaubanController.SetAnimation(VaubanController.AnimState.HAPPY);
+        VFXVictoire.SetActive(true);
         yield return new WaitForSeconds(1f);
 
         Vector3 vector3 = new Vector3(54f, 0, 0);

@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using static VaubanController;
 
 public class ClocheController : MonoBehaviour
 {
     private Animator Animator;
+    [SerializeField] private AudioManager AudioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,5 +15,6 @@ public class ClocheController : MonoBehaviour
     public void RingBell()
     {
         Animator.SetTrigger("Ring");
+        AudioManager.Play("clochette",2);
     }
 }
