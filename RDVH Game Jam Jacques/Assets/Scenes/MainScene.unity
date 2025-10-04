@@ -14383,7 +14383,7 @@ MonoBehaviour:
   textUI: {fileID: 1181640979}
   nextButton: {fileID: 567393779}
   AudioManager: {fileID: 429598063}
-  charsPerSecond: 40
+  charsPerSecond: 60
   useUnscaledTime: 0
   punctuation: ".,;:!?\u2026"
   punctuationExtraDelay: 0.25
@@ -19709,9 +19709,9 @@ MonoBehaviour:
     levelEnvironment: {fileID: 2000053012}
   - config: {fileID: 11400000, guid: 29325b675eb908d44a930af9459c257e, type: 2}
     levelEnvironment: {fileID: 562698670}
-  - config: {fileID: 11400000, guid: f430ef3cbc9914c46b72ddeb653e12bd, type: 2}
+  - config: {fileID: 11400000, guid: 4cc8527c640320e43ab37c9c1a2a40a1, type: 2}
     levelEnvironment: {fileID: 224892800}
-  - config: {fileID: 11400000, guid: caae0eeb54e46c74fa2095a9f3e24ebb, type: 2}
+  - config: {fileID: 11400000, guid: e9328b9c9fc90d94cb861c95b142c95f, type: 2}
     levelEnvironment: {fileID: 97149985}
   outroContext:
     config: {fileID: 0}
@@ -40533,6 +40533,35 @@ MonoBehaviour:
   playButton: {fileID: 372281321}
   Logo: {fileID: 2044233357}
   MainController: {fileID: 1138984408}
+  hoverScaleMultiplier: 1.1
+  scaleDuration: 0.05
+  useUnscaledTime: 1
+  scaleEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  logoFadeDuration: 2
+  buttonFadeDuration: 2
 --- !u!1001 &2092479604
 PrefabInstance:
   m_ObjectHideFlags: 0

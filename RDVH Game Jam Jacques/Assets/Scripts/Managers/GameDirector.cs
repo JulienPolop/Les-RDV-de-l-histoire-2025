@@ -44,9 +44,9 @@ public class GameDirector : MonoBehaviour
         Debug.Log("Init");
         yield return MoveCamera(levelEnvironment.cameraFocusPoint.position + config.cameraOffset, GameCameraRotation);
         //MainCamera.transform.position = levelEnvironment.cameraFocusPoint.position + config.cameraOffset;
-        Debug.Log("Just Before Wait 2 seconds"); 
-        yield return new WaitForSeconds(2f);
-        Debug.Log("After 2s wait, Move Vauban");
+        //Debug.Log("Just Before Wait 2 seconds"); 
+        //yield return new WaitForSeconds(2f);
+        //Debug.Log("After 2s wait, Move Vauban");
         // Déplacement Vauban
         yield return MoveVauban(levelEnvironment.VaubanPosition.position);
         Debug.Log("After Vauban");

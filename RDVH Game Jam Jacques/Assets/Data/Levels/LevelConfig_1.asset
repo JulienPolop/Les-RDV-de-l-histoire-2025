@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
   Title: Camp
   Goal:
-    Flags: 000000000000000001000000
+    Flags: 010000000100000002000000
   playableClip:
     m_Version: 1
     m_Start: 0
