@@ -6,6 +6,7 @@ public class ClocheController : MonoBehaviour
 {
     private Animator Animator;
     [SerializeField] private AudioManager AudioManager;
+    [SerializeField] private ParticleSystem VFXRingBell;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,5 +17,6 @@ public class ClocheController : MonoBehaviour
     {
         Animator.SetTrigger("Ring");
         AudioManager.Play("clochette",2);
+        VFXRingBell.Play();
     }
 }

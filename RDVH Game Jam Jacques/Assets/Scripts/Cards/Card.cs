@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Animator animator;
     [Space(20)]
     [SerializeField] private Renderer visualRenderer;
+    [SerializeField] private ParticleSystem VFXCardOk;
 
     public void OnHoverStart() => this.animator.SetBool("hover", true);
     public void OnHoverEnd() => this.animator.SetBool("hover", false);
@@ -97,5 +98,6 @@ public class Card : MonoBehaviour
     {
         this.animator.SetTrigger("validate");
         AudioManager.Play("cardPlaced");
+        VFXCardOk.Play();
     }
 }
