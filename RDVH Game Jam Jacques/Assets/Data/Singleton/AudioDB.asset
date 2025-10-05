@@ -58,3 +58,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d4e01b4ca043b414589c4c9910e5438e, type: 3}
     - {fileID: 8300000, guid: a97da91aa27d58149b5566ba7d2e15db, type: 3}
     Type: 0
+  - ID: clochette
+    clips:
+    - {fileID: 8300000, guid: 954438fe4869e4749b5fea435d0b6569, type: 3}
+    Type: 0
