@@ -19,4 +19,15 @@ public class ClocheController : MonoBehaviour
         AudioManager.Play("clochette",2);
         VFXRingBell.Play();
     }
+
+    public void SetAnimation(AnimState state)
+    {
+        Animator.SetInteger("State", (int)state);
+    }
+
+    public enum AnimState : int
+    {
+        IDLE = 0,
+        MOUSEOVER = 1,
+    }
 }

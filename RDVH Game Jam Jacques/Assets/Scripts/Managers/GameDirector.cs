@@ -54,8 +54,10 @@ public class GameDirector : MonoBehaviour
         yield return MoveVauban(levelEnvironment.VaubanPosition.position);
         Debug.Log("After Vauban");
         // Dialogue de Vauban (même nom RunAsync, appelé en coroutine)
+        VaubanController.SetAnimation(VaubanController.AnimState.TALK);
         if (DialogController != null)
             yield return DialogController.RunDialog(levelEnvironment.VaubanDialog);
+        VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
 
         if (AudioManager.battleSource != null)
             AudioManager.battleSource.Play();
@@ -83,8 +85,10 @@ public class GameDirector : MonoBehaviour
             }
         );
 
+        VaubanController.SetAnimation(VaubanController.AnimState.TALK);
         if (DialogController != null)
             yield return DialogController.RunDialog(levelEnvironment.VaubanDialog);
+        VaubanController.SetAnimation(VaubanController.AnimState.IDLE);
     }
 
     // Garde le comportement d’origine: caméra lancée "en fond", on attend seulement Vauban

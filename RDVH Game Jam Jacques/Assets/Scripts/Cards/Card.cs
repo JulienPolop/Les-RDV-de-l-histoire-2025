@@ -98,6 +98,7 @@ public class Card : MonoBehaviour
     {
         this.animator.SetTrigger("validate");
         AudioManager.Play("cardPlaced");
+        AudioManager.Play("cardGood");
         VFXCardOk.Play();
     }
 }

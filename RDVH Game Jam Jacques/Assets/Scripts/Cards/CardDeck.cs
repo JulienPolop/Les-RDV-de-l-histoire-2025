@@ -23,6 +23,8 @@ public class CardDeck : MonoBehaviour
     {
         this.OnCardCliked = OnCardCliked;
         rerollInteractor.OnClick = this.OnClickReroll;
+        rerollInteractor.OnHoverStart = () => bellController.SetAnimation(ClocheController.AnimState.MOUSEOVER);
+        rerollInteractor.OnHoverEnd = () => bellController.SetAnimation(ClocheController.AnimState.IDLE);
     }
 
     private void OnClickReroll()

@@ -10,7 +10,7 @@ public partial class Main : MonoBehaviour
 {
     [SerializeField] private AttackDeck attackDeck;
     [SerializeField] private CardDeck cardDeck;
-    [SerializeField] private GameDirector director;
+    [SerializeField] public GameDirector director;
     [SerializeField] private ClickDetector detector;
 
     [SerializeField] private TutoManager tutoManager;
@@ -36,6 +36,7 @@ public partial class Main : MonoBehaviour
 
     public void Start()
     {
+        fadeController.gameObject.SetActive(true);
         StartCoroutine(fadeController.FadeIn());
 
         // Setup
@@ -101,6 +102,7 @@ public partial class Main : MonoBehaviour
 
     private IEnumerator FirstStepRoutine()
     {
+        AudioManager.Play("startGame");
         Debug.Log("Init First Step");
         detector.SetActive(false);
         cardDeck.gameObject.SetActive(false);
@@ -150,6 +152,7 @@ public partial class Main : MonoBehaviour
         if (currentLevelContext != null)
         {
             // Play destruction Animation
+            AudioManager.Play("eboulement");
             currentLevelContext.levelEnvironment.Validate();
             director.CameraShake(wait, 0.025f);
         }

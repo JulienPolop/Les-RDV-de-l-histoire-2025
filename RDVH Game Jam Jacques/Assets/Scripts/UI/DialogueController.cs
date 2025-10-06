@@ -100,6 +100,7 @@ public class DialogueController : MonoBehaviour
 
     private void OnNextClicked()
     {
+        AudioManager.Play("uiButtonClick");
         if (_typing)
         {
             // En cours de frappe -> on demande un skip

@@ -90,6 +90,7 @@ public class TutoManager : MonoBehaviour
     private void OnNextClicked()
     {
         _clickRequested = true;
+        AudioManager.Play("uiButtonClick");
     }
 
     public IEnumerator WaitNextClick(CancellationToken token)

@@ -20,5 +20,6 @@ public class VaubanController : MonoBehaviour
         IDLE = 0,
         HAPPY = 1,
         RUN = 2,
+        TALK = 3
     }
 }

@@ -141,6 +141,8 @@ public class MenuController : MonoBehaviour
 
     private IEnumerator ClickBounceAndPlay()
     {
+        AudioManager.Play("uiButtonClick");
+
         Transform t = playButton.transform;
         Vector3 start = initialPlayButtonScale * hoverScaleMultiplier;
         Vector3 up = start * 1.1f;

@@ -46,6 +46,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5768ac177fddb854498fb6089f45feae, type: 3}
     - {fileID: 8300000, guid: c2e27edb4826ada408b236cacbf20301, type: 3}
     Type: 0
+  - ID: cardGood
+    clips:
+    - {fileID: 8300000, guid: 0dd92083027c4454ca08d6cb376d8357, type: 3}
+    Type: 0
   - ID: cardHoover
     clips:
     - {fileID: 8300000, guid: 1a0d722e1f386804cb9ef20aeec3e525, type: 3}
@@ -61,4 +65,16 @@ MonoBehaviour:
   - ID: clochette
     clips:
     - {fileID: 8300000, guid: 954438fe4869e4749b5fea435d0b6569, type: 3}
+    Type: 0
+  - ID: uiButtonClick
+    clips:
+    - {fileID: 8300000, guid: fba94e87088246b4b8e8957d7066eb57, type: 3}
+    Type: 0
+  - ID: startGame
+    clips:
+    - {fileID: 8300000, guid: d3cc434de460a7a4789125c5a7800229, type: 3}
+    Type: 0
+  - ID: eboulement
+    clips:
+    - {fileID: 8300000, guid: aa9591d01e2111e4eb10b72580cdbce4, type: 3}
     Type: 0
